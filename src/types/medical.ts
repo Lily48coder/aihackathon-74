@@ -50,3 +50,13 @@ export type Patient = {
   area: string;
   symptoms: string[];
 };
+
+export type DoctorInfo = {
+  name: string;
+  age: number;
+  gender: string;
+  email: string;
+  phone: string;
+  hospital: string;
+  department: string;
+};
