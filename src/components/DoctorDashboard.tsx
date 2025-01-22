@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { MoreVertical } from "lucide-react";
 import { STATES, SYMPTOMS, MOCK_PATIENTS } from "@/data/medical";
 import type { DoctorInfo, Patient } from "@/types/medical";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,6 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedSymptom, setSelectedSymptom] = useState("");
   
-  // Filter patients based on selections
   const filteredPatients = MOCK_PATIENTS.filter(patient => {
     return (!selectedState || patient.state === selectedState) &&
            (!selectedArea || patient.area === selectedArea) &&
@@ -32,23 +30,11 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Welcome, Dr. {doctor.name}</h1>
-            <p className="text-gray-600">{doctor.department} - {doctor.hospital}</p>
-          </div>
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => navigate('/camp-schedules')}
-          >
-            <MoreVertical className="h-5 w-5" />
-          </Button>
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Welcome, Dr. {doctor.name}</h1>
+          <p className="text-gray-600">{doctor.department} - {doctor.hospital}</p>
         </div>
 
-        {/* Search Filters */}
         <Card className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label>State</Label>
@@ -102,7 +88,6 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </div>
         </Card>
 
-        {/* Patient List */}
         <Card className="p-6">
           <h2 className="text-xl font-semibold mb-4">Patients</h2>
           <div className="space-y-4">
@@ -128,6 +113,22 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
             </p>
           </div>
         </Card>
+
+        <div className="flex justify-between items-center mt-8">
+          <Button 
+            variant="outline"
+            onClick={() => navigate(-1)}
+            className="text-gray-600"
+          >
+            Back
+          </Button>
+          <Button
+            onClick={() => navigate('/camp-schedules')}
+            className="bg-primary text-white"
+          >
+            Schedule Camp
+          </Button>
+        </div>
       </div>
     </div>
   );

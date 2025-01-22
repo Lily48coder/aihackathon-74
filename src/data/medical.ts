@@ -85,26 +85,34 @@ export const DEPARTMENTS = [
 ];
 
 export const STATES = [
-  {
-    id: 1,
-    name: "Maharashtra",
-    area: "Mumbai Central"
-  },
-  {
-    id: 2,
-    name: "Delhi",
-    area: "New Delhi"
-  },
-  {
-    id: 3,
-    name: "Karnataka",
-    area: "Bangalore South"
-  },
-  {
-    id: 4,
-    name: "Telangana",
-    area: "Bhadrachalam"
-  }
+  { id: 1, name: "Andhra Pradesh", area: "Rampachodavaram" },
+  { id: 2, name: "Arunachal Pradesh", area: "Anini" },
+  { id: 3, name: "Assam", area: "Majuli" },
+  { id: 4, name: "Bihar", area: "Valmiki Nagar" },
+  { id: 5, name: "Chhattisgarh", area: "Bijapur" },
+  { id: 6, name: "Goa", area: "Sanguem" },
+  { id: 7, name: "Gujarat", area: "Rann of Kutch" },
+  { id: 8, name: "Haryana", area: "Mewat" },
+  { id: 9, name: "Himachal Pradesh", area: "Kinnaur" },
+  { id: 10, name: "Jharkhand", area: "Latehar" },
+  { id: 11, name: "Karnataka", area: "Bylakuppe" },
+  { id: 12, name: "Kerala", area: "Wayanad" },
+  { id: 13, name: "Madhya Pradesh", area: "Mandla" },
+  { id: 14, name: "Maharashtra", area: "Gadchiroli" },
+  { id: 15, name: "Manipur", area: "Churachandpur" },
+  { id: 16, name: "Meghalaya", area: "Mawsynram" },
+  { id: 17, name: "Mizoram", area: "Saiha" },
+  { id: 18, name: "Nagaland", area: "Tuensang" },
+  { id: 19, name: "Odisha", area: "Malkangiri" },
+  { id: 20, name: "Punjab", area: "Gurdaspur" },
+  { id: 21, name: "Rajasthan", area: "Barmer" },
+  { id: 22, name: "Sikkim", area: "Lachen" },
+  { id: 23, name: "Tamil Nadu", area: "Jawadhu Hills" },
+  { id: 24, name: "Telangana", area: "Bhadrachalam" },
+  { id: 25, name: "Tripura", area: "Dhalai" },
+  { id: 26, name: "Uttar Pradesh", area: "Sonbhadra" },
+  { id: 27, name: "Uttarakhand", area: "Pithoragarh" },
+  { id: 28, name: "West Bengal", area: "Sundarbans" }
 ];
 
 export const SYMPTOMS = [
