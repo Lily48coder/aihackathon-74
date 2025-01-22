@@ -6,10 +6,7 @@ export type Hospital = {
   location: string;
 };
 
-export type Department = {
-  id: number;
-  name: string;
-};
+export type Department = string;
 
 export type State = {
   id: number;

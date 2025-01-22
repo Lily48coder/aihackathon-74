@@ -1,34 +1,87 @@
 export const HOSPITALS = [
   {
     id: 1,
-    name: "City General Hospital",
-    location: "Mumbai",
-    departments: ["Cardiology", "Neurology", "Orthopedics"]
+    name: "All India Institute of Medical Sciences (AIIMS), New Delhi",
+    location: "New Delhi"
   },
   {
     id: 2,
-    name: "Apollo Hospitals",
-    location: "Delhi",
-    departments: ["Oncology", "Pediatrics", "Surgery"]
+    name: "Christian Medical College (CMC), Vellore",
+    location: "Vellore"
   },
   {
     id: 3,
-    name: "Fortis Healthcare",
-    location: "Bangalore",
-    departments: ["Emergency", "ICU", "Internal Medicine"]
+    name: "Apollo Hospitals, Hyderabad",
+    location: "Hyderabad"
+  },
+  {
+    id: 4,
+    name: "Nizam's Institute of Medical Sciences (NIMS), Hyderabad",
+    location: "Hyderabad"
+  },
+  {
+    id: 5,
+    name: "King George Hospital (KGH), Visakhapatnam",
+    location: "Visakhapatnam"
+  },
+  {
+    id: 6,
+    name: "Andhra Hospitals, Vijayawada",
+    location: "Vijayawada"
+  },
+  {
+    id: 7,
+    name: "Fortis Memorial Research Institute, Gurugram",
+    location: "Gurugram"
+  },
+  {
+    id: 8,
+    name: "Tata Memorial Hospital, Mumbai",
+    location: "Mumbai"
+  },
+  {
+    id: 9,
+    name: "Sankara Nethralaya, Chennai",
+    location: "Chennai"
+  },
+  {
+    id: 10,
+    name: "Kokilaben Dhirubhai Ambani Hospital, Mumbai",
+    location: "Mumbai"
   }
 ];
 
 export const DEPARTMENTS = [
+  "Emergency Department (ED)",
+  "Intensive Care Unit (ICU)",
   "Cardiology",
   "Neurology",
   "Orthopedics",
-  "Oncology",
   "Pediatrics",
+  "Oncology",
+  "Gastroenterology",
+  "Obstetrics and Gynecology (OB/GYN)",
+  "Radiology",
+  "Pathology",
+  "Anesthesia",
   "Surgery",
-  "Emergency",
-  "ICU",
-  "Internal Medicine"
+  "Nephrology",
+  "Endocrinology",
+  "Dermatology",
+  "Psychiatry",
+  "Pulmonology",
+  "Urology",
+  "Hematology",
+  "Physical Therapy (Physiotherapy)",
+  "Pharmacy",
+  "Nutrition and Dietetics",
+  "Social Services",
+  "Laboratory Services",
+  "Radiotherapy",
+  "Infectious Disease",
+  "Rehabilitation Services",
+  "Audiology",
+  "Ophthalmology"
 ];
 
 export const STATES = [
