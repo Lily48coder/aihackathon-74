@@ -1,17 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PatientHistory from "./pages/PatientHistory";
-import PatientSymptoms from "./pages/PatientSymptoms";
-import PatientRisks from "./pages/PatientRisks";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
+import Index from "@/pages/Index";
+import Welcome from "@/pages/Welcome";
+import SignIn from "@/pages/SignIn";
+import SignUp from "@/pages/SignUp";
 import Dashboard from "@/pages/Dashboard";
 import Profile from "@/pages/Profile";
-import PatientRegistration from "@/pages/PatientRegistration";
+import PatientWelcome from "@/pages/PatientWelcome";
+import PatientSignIn from "@/pages/PatientSignIn";
+import PatientSignUp from "@/pages/PatientSignUp";
+import PatientHistory from "@/pages/PatientHistory";
+import PatientSymptoms from "@/pages/PatientSymptoms";
+import PatientRisks from "@/pages/PatientRisks";
+import CampSchedules from "@/pages/CampSchedules";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +27,15 @@ function App() {
         <AuthProvider>
           <Router>
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Index />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/patient/welcome" element={<PatientWelcome />} />
+              <Route path="/patient/sign-in" element={<PatientSignIn />} />
+              <Route path="/patient/sign-up" element={<PatientSignUp />} />
               <Route
-                path="/"
+                path="/dashboard"
                 element={
                   <ProtectedRoute>
                     <Dashboard />
@@ -41,10 +51,10 @@ function App() {
                 }
               />
               <Route
-                path="/patient/register"
+                path="/camp-schedules"
                 element={
                   <ProtectedRoute>
-                    <PatientRegistration />
+                    <CampSchedules />
                   </ProtectedRoute>
                 }
               />

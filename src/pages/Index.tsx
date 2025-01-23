@@ -14,14 +14,14 @@ const Index = () => {
         <div className="grid grid-cols-2 gap-4">
           <Button 
             onClick={() => navigate("/welcome")}
-            className="w-full"
+            className="w-full bg-[#0077B6] hover:bg-[#0077B6]/90"
           >
             Doctor
           </Button>
           <Button 
             onClick={() => navigate("/patient/welcome")}
             variant="outline"
-            className="w-full"
+            className="w-full border-[#0077B6] text-[#0077B6] hover:bg-[#90E0EF]/10"
           >
             Patient
           </Button>

@@ -14,14 +14,14 @@ const Welcome = () => {
         <div className="grid grid-cols-2 gap-4">
           <Button 
             onClick={() => navigate("/sign-in")}
-            className="w-full"
+            className="w-full bg-[#0077B6] hover:bg-[#0077B6]/90"
           >
             Sign In
           </Button>
           <Button 
             onClick={() => navigate("/sign-up")}
             variant="outline"
-            className="w-full"
+            className="w-full border-[#0077B6] text-[#0077B6] hover:bg-[#90E0EF]/10"
           >
             Sign Up
           </Button>

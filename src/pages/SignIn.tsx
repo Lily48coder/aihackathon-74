@@ -51,6 +51,7 @@ const SignIn = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="bg-white"
             />
           </div>
           
@@ -63,22 +64,31 @@ const SignIn = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="bg-white"
             />
           </div>
 
           <Button
             type="button"
             variant="link"
-            className="px-0"
+            className="px-0 text-[#0077B6]"
             onClick={handleForgotPassword}
           >
             Forgot password?
           </Button>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-[#0077B6] hover:bg-[#0077B6]/90">
             Sign In
           </Button>
         </form>
+
+        <Button 
+          variant="outline" 
+          className="w-full border-[#0077B6] text-[#0077B6] hover:bg-[#90E0EF]/10"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </Button>
       </Card>
     </div>
   );

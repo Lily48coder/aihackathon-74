@@ -51,6 +51,7 @@ const SignUp = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              className="bg-white"
             />
           </div>
 
@@ -64,6 +65,7 @@ const SignUp = () => {
               value={formData.age}
               onChange={handleChange}
               required
+              className="bg-white"
             />
           </div>
 
@@ -91,6 +93,7 @@ const SignUp = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              className="bg-white"
             />
           </div>
 
@@ -104,6 +107,7 @@ const SignUp = () => {
               value={formData.phone}
               onChange={handleChange}
               required
+              className="bg-white"
             />
           </div>
 
@@ -149,13 +153,22 @@ const SignUp = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              className="bg-white"
             />
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-[#0077B6] hover:bg-[#0077B6]/90">
             Sign Up
           </Button>
         </form>
+
+        <Button 
+          variant="outline" 
+          className="w-full border-[#0077B6] text-[#0077B6] hover:bg-[#90E0EF]/10"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </Button>
       </Card>
     </div>
   );
