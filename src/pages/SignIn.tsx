@@ -5,15 +5,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
+    login(); // Update authentication state
     toast({
       title: "Successfully Signed In!",
       description: "Welcome back to the platform.",
@@ -39,7 +42,7 @@ const SignIn = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Sign In</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-900">Doctor Sign In</h1>
         
         <form onSubmit={handleSignIn} className="space-y-4">
           <div className="space-y-2">
