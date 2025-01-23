@@ -18,13 +18,14 @@ const SignIn = () => {
     e.preventDefault();
     // In a real app, you would verify credentials here
     // For now, we'll simulate getting the user data from the backend
-    const mockUserData = {
-      name: "Sahiti Sri", // This would normally come from your backend
-      department: "Cardiology",
-      hospital: "City Hospital"
+    const formData = JSON.parse(localStorage.getItem('signupData') || '{}');
+    const userData = {
+      name: formData.name || 'Sahiti Sri', // Fallback if no data
+      department: formData.department || 'Cardiology',
+      hospital: formData.hospital || 'City Hospital'
     };
     
-    setUserData(mockUserData);
+    setUserData(userData);
     login();
     toast({
       title: "Successfully Signed In!",

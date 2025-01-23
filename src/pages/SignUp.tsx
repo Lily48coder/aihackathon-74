@@ -29,6 +29,8 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Store the form data in localStorage
+    localStorage.setItem('signupData', JSON.stringify(formData));
     toast({
       title: "Successfully Registered!",
       description: "Please sign in with your new account.",
