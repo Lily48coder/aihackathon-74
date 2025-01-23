@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { STATES, SYMPTOMS, MOCK_PATIENTS } from "@/data/medical";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -33,7 +33,15 @@ const Dashboard = () => {
     <div className="container mx-auto p-6">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Welcome, Dr. {user?.name}</h1>
+          <Button 
+            variant="ghost" 
+            className="mb-4"
+            onClick={() => navigate(-1)}
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+          <h1 className="text-3xl font-bold mb-2">Welcome, {user?.name}</h1>
           <p className="text-gray-600">
             {user?.department} | {user?.hospital}
           </p>
