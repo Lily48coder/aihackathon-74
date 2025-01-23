@@ -9,6 +9,10 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import DoctorDashboard from "./components/DoctorDashboard";
 import CampSchedules from "./components/CampSchedules";
+import PatientWelcome from "./pages/PatientWelcome";
+import PatientSignIn from "./pages/PatientSignIn";
+import PatientSignUp from "./pages/PatientSignUp";
+import PatientHistory from "./pages/PatientHistory";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +37,12 @@ const App = () => (
             department: "Cardiology"
           }} />} />
           <Route path="/camp-schedules" element={<CampSchedules />} />
+          
+          {/* Patient Routes */}
+          <Route path="/patient/welcome" element={<PatientWelcome />} />
+          <Route path="/patient/sign-in" element={<PatientSignIn />} />
+          <Route path="/patient/sign-up" element={<PatientSignUp />} />
+          <Route path="/patient/history" element={<PatientHistory />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
