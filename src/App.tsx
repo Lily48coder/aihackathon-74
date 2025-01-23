@@ -1,52 +1,72 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Welcome from "./pages/Welcome";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import DoctorDashboard from "./components/DoctorDashboard";
-import CampSchedules from "./components/CampSchedules";
-import PatientWelcome from "./pages/PatientWelcome";
-import PatientSignIn from "./pages/PatientSignIn";
-import PatientSignUp from "./pages/PatientSignUp";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PatientHistory from "./pages/PatientHistory";
+import PatientSymptoms from "./pages/PatientSymptoms";
+import PatientRisks from "./pages/PatientRisks";
+import { ThemeProvider } from "@/components/theme-provider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "@/context/AuthContext";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
+import Dashboard from "@/pages/Dashboard";
+import Camps from "@/pages/Camps";
+import Profile from "@/pages/Profile";
+import PatientRegistration from "@/pages/PatientRegistration";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/dashboard" element={<DoctorDashboard doctor={{
-            name: "John Doe",
-            age: 35,
-            gender: "Male",
-            email: "john@example.com",
-            phone: "1234567890",
-            hospital: "Apollo Hospitals",
-            department: "Cardiology"
-          }} />} />
-          <Route path="/camp-schedules" element={<CampSchedules />} />
-          
-          {/* Patient Routes */}
-          <Route path="/patient/welcome" element={<PatientWelcome />} />
-          <Route path="/patient/sign-in" element={<PatientSignIn />} />
-          <Route path="/patient/sign-up" element={<PatientSignUp />} />
-          <Route path="/patient/history" element={<PatientHistory />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/camps"
+                element={
+                  <ProtectedRoute>
+                    <Camps />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/patient/register"
+                element={
+                  <ProtectedRoute>
+                    <PatientRegistration />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/patient/history" element={<PatientHistory />} />
+              <Route path="/patient/symptoms" element={<PatientSymptoms />} />
+              <Route path="/patient/risks" element={<PatientRisks />} />
+            </Routes>
+          </Router>
+          <Toaster />
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
