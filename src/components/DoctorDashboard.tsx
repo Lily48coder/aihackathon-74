@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { STATES, SYMPTOMS, MOCK_PATIENTS } from "@/data/medical";
-import type { DoctorInfo, Patient } from "@/types/medical";
+import type { DoctorInfo } from "@/types/medical";
 import { useNavigate } from "react-router-dom";
 
 interface DoctorDashboardProps {
