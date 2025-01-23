@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
+import { useToast } from "@/hooks/use-toast";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +14,16 @@ import { CAMP_SCHEDULES } from "@/data/medical";
 
 const CampSchedules = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const { toast } = useToast();
+
+  const handleSchedule = (department: string) => {
+    if (date) {
+      toast({
+        title: "Camp Scheduled",
+        description: `${department} camp scheduled for ${date.toLocaleDateString()}`,
+      });
+    }
+  };
 
   return (
     <div className="container mx-auto p-6">
@@ -47,6 +58,12 @@ const CampSchedules = () => {
                     onSelect={setDate}
                     className="rounded-md border"
                   />
+                  <Button 
+                    className="mt-4 w-full bg-[#0077B6] hover:bg-[#0077B6]/90"
+                    onClick={() => handleSchedule(schedule.department)}
+                  >
+                    Confirm Schedule
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
