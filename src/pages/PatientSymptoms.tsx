@@ -102,7 +102,7 @@ const PatientSymptoms = () => {
               onClick={handleNext}
               disabled={!selectedSymptom}
             >
-              Next
+              Analyze
             </Button>
           </div>
         </div>

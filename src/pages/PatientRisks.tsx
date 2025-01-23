@@ -29,17 +29,6 @@ const PatientRisks = () => {
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Available Camps</h2>
-            <Button 
-              variant="outline"
-              className="w-full"
-              onClick={() => navigate("/camps")}
-            >
-              Check Camps
-            </Button>
-          </div>
-
-          <div className="space-y-4">
             <h2 className="text-xl font-semibold">Contact Information</h2>
             <div className="space-y-2">
               <p>National Health Support Helpline: <span className="font-medium">91-20-2770 3000</span></p>
