@@ -10,13 +10,22 @@ import { useAuth } from "@/context/AuthContext";
 const SignIn = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { login } = useAuth();
+  const { login, setUserData } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    login(); // Update authentication state
+    // In a real app, you would verify credentials here
+    // For now, we'll simulate getting the user data from the backend
+    const mockUserData = {
+      name: "Sahiti Sri", // This would normally come from your backend
+      department: "Cardiology",
+      hospital: "City Hospital"
+    };
+    
+    setUserData(mockUserData);
+    login();
     toast({
       title: "Successfully Signed In!",
       description: "Welcome back to the platform.",
