@@ -3,6 +3,13 @@ import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { STATES, SYMPTOMS, MOCK_PATIENTS } from "@/data/medical";
 import type { DoctorInfo, Patient } from "@/types/medical";
 import { useNavigate } from "react-router-dom";
@@ -30,9 +37,24 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
       <div className="max-w-7xl mx-auto space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Welcome, Dr. {doctor.name}</h1>
-          <p className="text-gray-600">{doctor.department} - {doctor.hospital}</p>
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Welcome, Dr. {doctor.name}</h1>
+            <p className="text-gray-600">{doctor.department} - {doctor.hospital}</p>
+          </div>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <MoreVertical className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => navigate('/camp-schedules')}>
+                Camp Schedules
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         <Card className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -113,22 +135,6 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
             </p>
           </div>
         </Card>
-
-        <div className="flex justify-between items-center mt-8">
-          <Button 
-            variant="outline"
-            onClick={() => navigate(-1)}
-            className="text-gray-600"
-          >
-            Back
-          </Button>
-          <Button
-            onClick={() => navigate('/camp-schedules')}
-            className="bg-primary text-white"
-          >
-            Schedule Camp
-          </Button>
-        </div>
       </div>
     </div>
   );
