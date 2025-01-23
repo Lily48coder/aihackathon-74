@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { STATES, SYMPTOMS, MOCK_PATIENTS } from "@/data/medical";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MoreVertical, ArrowLeft } from "lucide-react";
+import { MoreVertical, ArrowLeft, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -41,14 +41,23 @@ const Dashboard = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
-          <h1 className="text-3xl font-bold mb-2">Welcome, {user?.name}</h1>
+          <h1 className="text-3xl font-bold mb-2">Welcome, Dr. {user?.name}</h1>
           <p className="text-gray-600">
             {user?.department} | {user?.hospital}
           </p>
         </div>
-        <Button variant="ghost" onClick={() => navigate("/camp-schedules")}>
-          <MoreVertical className="h-6 w-6" />
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline"
+            onClick={() => navigate("/camp-schedules")}
+          >
+            <Calendar className="h-4 w-4 mr-2" />
+            Camp Schedules
+          </Button>
+          <Button variant="ghost" onClick={() => navigate("/camp-schedules")}>
+            <MoreVertical className="h-6 w-6" />
+          </Button>
+        </div>
       </div>
 
       {/* Filters */}
