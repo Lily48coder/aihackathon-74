@@ -26,16 +26,6 @@ const Welcome = () => {
             Sign Up
           </Button>
         </div>
-
-        <div className="pt-4">
-          <Button 
-            onClick={() => navigate("/camp-schedules")}
-            variant="secondary"
-            className="w-full"
-          >
-            Schedule Camps
-          </Button>
-        </div>
       </Card>
     </div>
   );

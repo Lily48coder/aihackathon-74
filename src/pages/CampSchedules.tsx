@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/use-toast";
 const CampSchedules = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("");
   const [date, setDate] = useState<Date>();
 
   const handleSchedule = () => {
@@ -35,27 +36,6 @@ const CampSchedules = () => {
       
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Camp Schedules</h1>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button>Schedule Camp</Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Schedule a New Camp</DialogTitle>
-            </DialogHeader>
-            <div className="flex flex-col gap-4">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-md border"
-              />
-              <Button onClick={handleSchedule} disabled={!date}>
-                Confirm Schedule
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -67,6 +47,32 @@ const CampSchedules = () => {
               <p><span className="font-medium">Location:</span> {schedule.location}</p>
               <p><span className="font-medium">Timing:</span> {schedule.timing}</p>
             </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  className="mt-4 w-full"
+                  onClick={() => setSelectedDepartment(schedule.department)}
+                >
+                  Schedule Camp
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Schedule a New Camp for {selectedDepartment}</DialogTitle>
+                </DialogHeader>
+                <div className="flex flex-col gap-4">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    className="rounded-md border"
+                  />
+                  <Button onClick={handleSchedule} disabled={!date}>
+                    Confirm Schedule
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </Card>
         ))}
       </div>
