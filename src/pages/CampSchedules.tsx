@@ -9,37 +9,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { CAMP_SCHEDULES } from "@/data/medical";
 
 const CampSchedules = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  
-  const schedules = [
-    {
-      department: "Emergency Department (ED)",
-      date: "Ongoing (24/7)",
-      location: "Uttar Pradesh, Lucknow, Raebareli",
-      timing: "24/7 availability"
-    },
-    {
-      department: "Intensive Care Unit (ICU)",
-      date: "Ongoing (24/7)",
-      location: "Maharashtra, Mumbai, Vasai",
-      timing: "24/7 availability"
-    },
-    {
-      department: "Cardiology",
-      date: "February 1 - February 5",
-      location: "Tamil Nadu, Chennai, Manali",
-      timing: "8 AM to 5 PM"
-    },
-    // Add more departments as needed
-  ];
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6 text-[#0077B6]">Medical Camp Schedules</h1>
       <div className="grid gap-6">
-        {schedules.map((schedule, index) => (
+        {CAMP_SCHEDULES.map((schedule, index) => (
           <Card key={index} className="p-6 shadow-md">
             <h2 className="text-xl font-semibold text-[#0077B6] mb-2">
               {schedule.department}
