@@ -610,5 +610,271 @@ export const MOCK_PATIENTS = [
     "state": "Karnataka",
     "area": "Agumbe",
     "symptoms": ["Chills", "Dizziness"]
-  }
+  },
+  {
+      "id": 41,
+      "name": "Rajat Verma",
+      "state": "Andhra Pradesh",
+      "area": "Rampachodavaram",
+      "symptoms": ["Fever", "Headache"]
+    },
+    {
+      "id": 42,
+      "name": "Sunitha Rao",
+      "state": "Andhra Pradesh",
+      "area": "Maredumilli",
+      "symptoms": ["Cough", "Fatigue"]
+    },
+    {
+      "id": 43,
+      "name": "Kiran Das",
+      "state": "Arunachal Pradesh",
+      "area": "Tuting",
+      "symptoms": ["Sore Throat", "Shortness of Breath"]
+    },
+    {
+      "id": 44,
+      "name": "Meena Sharma",
+      "state": "Arunachal Pradesh",
+      "area": "Vijaynagar",
+      "symptoms": ["Cold", "Body Ache"]
+    },
+    {
+      "id": 45,
+      "name": "Ankit Sinha",
+      "state": "Assam",
+      "area": "Jonai",
+      "symptoms": ["Fever", "Diarrhea"]
+    },
+    {
+      "id": 46,
+      "name": "Priyanka Roy",
+      "state": "Assam",
+      "area": "Haflong",
+      "symptoms": ["Cough", "Loss of Appetite"]
+    },
+    {
+      "id": 47,
+      "name": "Ravi Shankar",
+      "state": "Bihar",
+      "area": "Kaimur Hills",
+      "symptoms": ["Body Ache", "Dizziness"]
+    },
+    {
+      "id": 48,
+      "name": "Rajni Kumari",
+      "state": "Bihar",
+      "area": "Lauria",
+      "symptoms": ["Nausea", "Fatigue"]
+    },
+    {
+      "id": 49,
+      "name": "Aditya Ghosh",
+      "state": "Chhattisgarh",
+      "area": "Narayanpur",
+      "symptoms": ["Fever", "Skin Rash"]
+    },
+    {
+      "id": 50,
+      "name": "Snehal Patil",
+      "state": "Chhattisgarh",
+      "area": "Sukma",
+      "symptoms": ["Vomiting", "Itching"]
+    },
+    {
+      "id": 51,
+      "name": "Rohan Fernandes",
+      "state": "Goa",
+      "area": "Dharbandora",
+      "symptoms": ["Cough", "Cold"]
+    },
+    {
+      "id": 52,
+      "name": "Liza D'Souza",
+      "state": "Goa",
+      "area": "Ponda",
+      "symptoms": ["Headache", "Fever"]
+    },
+    {
+      "id": 53,
+      "name": "Anil Shah",
+      "state": "Gujarat",
+      "area": "Bharuch Tribals",
+      "symptoms": ["Fatigue", "Joint Pain"]
+    },
+    {
+      "id": 54,
+      "name": "Priya Mehta",
+      "state": "Gujarat",
+      "area": "Gir Forest Region",
+      "symptoms": ["Sore Throat", "Shortness of Breath"]
+    },
+    {
+      "id": 55,
+      "name": "Ramesh Chawla",
+      "state": "Haryana",
+      "area": "Mewat",
+      "symptoms": ["Cold", "Cough"]
+    },
+    {
+      "id": 56,
+      "name": "Kavita Malik",
+      "state": "Haryana",
+      "area": "Kalka",
+      "symptoms": ["Headache", "Vomiting"]
+    },
+    {
+      "id": 57,
+      "name": "Vikas Rana",
+      "state": "Himachal Pradesh",
+      "area": "Tissa",
+      "symptoms": ["Fever", "Breathing Difficulty"]
+    },
+    {
+      "id": 58,
+      "name": "Pooja Thakur",
+      "state": "Himachal Pradesh",
+      "area": "Kaza",
+      "symptoms": ["Fatigue", "Chest Pain"]
+    },
+    {
+      "id": 59,
+      "name": "Amit Kumar",
+      "state": "Jharkhand",
+      "area": "Saranda",
+      "symptoms": ["Cough", "Skin Rash"]
+    },
+    {
+      "id": 60,
+      "name": "Ritu Kumari",
+      "state": "Jharkhand",
+      "area": "Dumka",
+      "symptoms": ["Cold", "Itching"]
+    },
+    {
+      "id": 61,
+      "name": "Vishal Shetty",
+      "state": "Karnataka",
+      "area": "Gokarna Hinterlands",
+      "symptoms": ["Dizziness", "Chills"]
+    },
+    {
+      "id": 62,
+      "name": "Anjana Nair",
+      "state": "Kerala",
+      "area": "Attappady",
+      "symptoms": ["Sore Throat", "Loss of Appetite"]
+    },
+    {
+      "id": 63,
+      "name": "Rohit Singh",
+      "state": "Madhya Pradesh",
+      "area": "Sheopur",
+      "symptoms": ["Body Ache", "Skin Rash"]
+    },
+    {
+      "id": 64,
+      "name": "Sneha Kulkarni",
+      "state": "Maharashtra",
+      "area": "Sawantwadi",
+      "symptoms": ["Headache", "Fever"]
+    },
+    {
+      "id": 65,
+      "name": "Ningthou Singh",
+      "state": "Manipur",
+      "area": "Senapati",
+      "symptoms": ["Cough", "Fatigue"]
+    },
+    {
+      "id": 66,
+      "name": "Meghna Roy",
+      "state": "Meghalaya",
+      "area": "Baghmara",
+      "symptoms": ["Shortness of Breath", "Chest Pain"]
+    },
+    {
+      "id": 67,
+      "name": "Tashi Zangmo",
+      "state": "Arunachal Pradesh",
+      "area": "Mechuka",
+      "symptoms": ["Joint Pain", "Fatigue"]
+    },
+    {
+      "id": 68,
+      "name": "Rajesh Choudhury",
+      "state": "Odisha",
+      "area": "Baliguda",
+      "symptoms": ["Cold", "Vomiting"]
+    },
+    {
+      "id": 69,
+      "name": "Simran Grewal",
+      "state": "Punjab",
+      "area": "Pathankot",
+      "symptoms": ["Fever", "Nausea"]
+    },
+    {
+      "id": 70,
+      "name": "Ravi Singh",
+      "state": "Rajasthan",
+      "area": "Barmer",
+      "symptoms": ["Skin Rash", "Fatigue"]
+    },
+    {
+      "id": 71,
+      "name": "Anjali Basu",
+      "state": "Sikkim",
+      "area": "Lachung",
+      "symptoms": ["Headache", "Breathing Difficulty"]
+    },
+    {
+      "id": 72,
+      "name": "Vikram Iyer",
+      "state": "Tamil Nadu",
+      "area": "Valparai",
+      "symptoms": ["Loss of Appetite", "Chest Pain"]
+    },
+    {
+      "id": 73,
+      "name": "Manisha Reddy",
+      "state": "Telangana",
+      "area": "Mulugu",
+      "symptoms": ["Cough", "Cold"]
+    },
+    {
+      "id": 74,
+      "name": "Dipankar Das",
+      "state": "Tripura",
+      "area": "Amarpur",
+      "symptoms": ["Body Ache", "Nausea"]
+    },
+    {
+      "id": 75,
+      "name": "Priya Verma",
+      "state": "Uttar Pradesh",
+      "area": "Chitrakoot",
+      "symptoms": ["Shortness of Breath", "Chest Pain"]
+    },
+    {
+      "id": 76,
+      "name": "Miguel Fernandes",
+      "state": "Uttarakhand",
+      "area": "Chopta",
+      "symptoms": ["Headache", "Fever"]
+    },
+    {
+      "id": 77,
+      "name": "Ravi Patel",
+      "state": "West Bengal",
+      "area": "Sandakphu",
+      "symptoms": ["Fatigue", "Dizziness"]
+    },
+    {
+      "id": 78,
+      "name": "Poonam Sharma",
+      "state": "West Bengal",
+      "area": "Jhargram",
+      "symptoms": ["Cold", "Cough"]
+    }
   ];
