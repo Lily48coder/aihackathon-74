@@ -72,14 +72,14 @@ const PatientRisks = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Potential Risks</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-900">Analysis</h1>
         
         <div className="space-y-6">
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Patient's Medical History and Symptoms</h2>
+            <h2 className="text-xl font-semibold">Symptoms</h2>
             <div className="flex items-center space-x-2">
               <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
-                Risk Level: {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
+                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
               </p>
               <span className="text-gray-500">({assessment.percentage}%)</span>
             </div>
