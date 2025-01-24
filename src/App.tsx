@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import SplashScreen from "@/pages/SplashScreen";
 import Index from "@/pages/Index";
 import Welcome from "@/pages/Welcome";
 import SignIn from "@/pages/SignIn";
@@ -27,6 +28,7 @@ function App() {
         <AuthProvider>
           <Router>
             <Routes>
+              <Route path="/splash" element={<SplashScreen />} />
               <Route path="/" element={<Index />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/sign-in" element={<SignIn />} />
