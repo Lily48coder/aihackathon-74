@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const RISK_COLORS = {
   low: "text-green-600",
@@ -8,13 +9,69 @@ const RISK_COLORS = {
   high: "text-red-600"
 };
 
+interface RiskAssessment {
+  level: keyof typeof RISK_COLORS;
+  percentage: number;
+  potentialIssues: string[];
+}
+
 const PatientRisks = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [assessment, setAssessment] = useState<RiskAssessment>({
+    level: "low",
+    percentage: 0,
+    potentialIssues: []
+  });
 
-  // This is a placeholder risk assessment. In a real application,
-  // this would be calculated based on the patient's history and symptoms
-  const riskLevel = "intermediate";
-  
+  useEffect(() => {
+    // In a real application, this would be an API call to an AI service
+    // For now, we'll simulate the AI analysis based on symptoms
+    const analyzeSymptoms = () => {
+      const selectedCategory = location.state?.selectedCategory;
+      const selectedSymptom = location.state?.selectedSymptom;
+
+      // Simulate AI analysis
+      let riskLevel: keyof typeof RISK_COLORS = "low";
+      let riskPercentage = 0;
+      let issues: string[] = [];
+
+      if (selectedCategory === "Cardiovascular Diseases") {
+        riskLevel = "high";
+        riskPercentage = 75;
+        issues = [
+          "Potential coronary artery disease",
+          "Risk of hypertensive crisis",
+          "Possible cardiac arrhythmia"
+        ];
+      } else if (selectedCategory === "Respiratory Diseases") {
+        riskLevel = "intermediate";
+        riskPercentage = 45;
+        issues = [
+          "Chronic bronchitis indicators",
+          "Early signs of asthma",
+          "Possible upper respiratory infection"
+        ];
+      } else {
+        riskLevel = "low";
+        riskPercentage = 25;
+        issues = [
+          "Minor inflammatory condition",
+          "Temporary systemic response",
+          "Stress-related symptoms"
+        ];
+      }
+
+      setAssessment({
+        level: riskLevel,
+        percentage: riskPercentage,
+        potentialIssues: issues
+      });
+    };
+
+    analyzeSymptoms();
+  }, [location.state]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
@@ -23,9 +80,24 @@ const PatientRisks = () => {
         <div className="space-y-6">
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Risk Assessment</h2>
-            <p className={`text-lg font-medium ${RISK_COLORS[riskLevel as keyof typeof RISK_COLORS]}`}>
-              {riskLevel.charAt(0).toUpperCase() + riskLevel.slice(1)} Risk
-            </p>
+            <div className="flex items-center space-x-2">
+              <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
+                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
+              </p>
+              <span className="text-gray-500">({assessment.percentage}%)</span>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Potential Issues</h2>
+            <ul className="space-y-2">
+              {assessment.potentialIssues.map((issue, index) => (
+                <li key={index} className="flex items-center space-x-2">
+                  <span className="h-2 w-2 rounded-full bg-blue-500"></span>
+                  <span>{issue}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="space-y-4">
