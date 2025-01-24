@@ -138,7 +138,7 @@ const PatientSignUp = () => {
                 <SelectValue placeholder={selectedState ? "Select area" : "Select state first"} />
               </SelectTrigger>
               <SelectContent>
-                {selectedState?.area.split(", ").map((area) => (
+                {selectedState?.areas.map((area) => (
                   <SelectItem key={area} value={area}>
                     {area}
                   </SelectItem>

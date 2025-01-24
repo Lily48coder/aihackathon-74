@@ -88,11 +88,11 @@ const Dashboard = () => {
               <SelectValue placeholder={selectedState ? "Select area" : "Select state first"} />
             </SelectTrigger>
             <SelectContent>
-              {stateObj && (
-                <SelectItem value={stateObj.area}>
-                  {stateObj.area}
+              {stateObj?.areas.map((area) => (
+                <SelectItem key={area} value={area}>
+                  {area}
                 </SelectItem>
-              )}
+              ))}
             </SelectContent>
           </Select>
         </div>
