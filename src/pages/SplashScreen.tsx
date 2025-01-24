@@ -19,12 +19,12 @@ const SplashScreen = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0EA5E9] to-[#D3E4FD] flex items-center justify-center p-4">
-      <div className="splash-content animate-fade-in transition-opacity duration-300">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="splash-content animate-fade-in transition-opacity duration-300 w-full h-screen flex items-center justify-center">
         <img
           src="/lovable-uploads/6d8ad15a-4ccf-4154-8818-4433e4803a93.png"
           alt="SymptoCamp Logo"
-          className="w-full max-w-2xl animate-scale-in"
+          className="w-full h-full object-contain animate-scale-in"
         />
       </div>
     </div>
