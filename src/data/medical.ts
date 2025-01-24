@@ -358,5 +358,257 @@ export const MOCK_PATIENTS = [
     state: "Delhi",
     area: "New Delhi",
     symptoms: ["Cough", "Shortness of Breath"]
+  },
+  {
+      "id": 5,
+      "name": "Ramesh Kumar",
+      "state": "Andhra Pradesh",
+      "area": "Araku Valley",
+      "symptoms": ["Fever", "Headache"]
+  },
+  {
+      "id": 6,
+      "name": "Tenzing Lama",
+      "state": "Arunachal Pradesh",
+      "area": "Tawang",
+      "symptoms": ["Joint Pain", "Fatigue"]
+  },
+    {
+      "id": 7,
+      "name": "Dipankar Das",
+      "state": "Assam",
+      "area": "Majuli",
+      "symptoms": ["Cough", "Cold"]
+    },
+    {
+      "id": 8,
+      "name": "Ravi Singh",
+      "state": "Bihar",
+      "area": "Raxaul",
+      "symptoms": ["Body Ache", "Nausea"]
+    },
+    {
+      "id": 9,
+      "name": "Priya Verma",
+      "state": "Chhattisgarh",
+      "area": "Dantewada",
+      "symptoms": ["Shortness of Breath", "Chest Pain"]
+    },
+    {
+      "id": 10,
+      "name": "Miguel Fernandes",
+      "state": "Goa",
+      "area": "Quepem",
+      "symptoms": ["Headache", "Fever"]
+    },
+    {
+      "id": 11,
+      "name": "Ravi Patel",
+      "state": "Gujarat",
+      "area": "Kutch Villages",
+      "symptoms": ["Fatigue", "Diarrhea"]
+    },
+    {
+      "id": 12,
+      "name": "Kavita Sharma",
+      "state": "Haryana",
+      "area": "Morni Hills",
+      "symptoms": ["Cough", "Sore Throat"]
+    },
+    {
+      "id": 13,
+      "name": "Amit Rana",
+      "state": "Himachal Pradesh",
+      "area": "Spiti Valley",
+      "symptoms": ["Cold", "Breathing Difficulty"]
+    },
+    {
+      "id": 14,
+      "name": "Pooja Soren",
+      "state": "Jharkhand",
+      "area": "Netarhat",
+      "symptoms": ["Fever", "Vomiting"]
+    },
+    {
+      "id": 15,
+      "name": "Vikram Shetty",
+      "state": "Karnataka",
+      "area": "Agumbe",
+      "symptoms": ["Chills", "Dizziness"]
+    },
+    {
+      "id": 16,
+      "name": "Anjali Nair",
+      "state": "Kerala",
+      "area": "Wayanad",
+      "symptoms": ["Cough", "Loss of Appetite"]
+    },
+    {
+      "id": 17,
+      "name": "Rajesh Singh",
+      "state": "Madhya Pradesh",
+      "area": "Mandla",
+      "symptoms": ["Fever", "Body Ache"]
+    },
+    {
+      "id": 18,
+      "name": "Sneha Kulkarni",
+      "state": "Maharashtra",
+      "area": "Melghat",
+      "symptoms": ["Skin Rash", "Itching"]
+    },
+    {
+      "id": 19,
+      "name": "Ningthou Singh",
+      "state": "Manipur",
+      "area": "Ukhrul",
+      "symptoms": ["Fever", "Cough"]
+    },
+    {
+      "id": 20,
+      "name": "Meghna Roy",
+      "state": "Meghalaya",
+      "area": "Mawsynram",
+      "symptoms": ["Breathing Difficulty", "Headache"]
+    },
+    {
+    "id": 21,
+    "name": "Sam Wilson",
+    "state": "Telangana",
+    "area": "Hyderabad",
+    "symptoms": ["Fever", "Body Ache"]
+  },
+  {
+    "id": 22,
+    "name": "Maya Reddy",
+    "state": "Telangana",
+    "area": "Warangal",
+    "symptoms": ["Cough", "Cold"]
+  },
+  {
+    "id": 23,
+    "name": "Rahul Verma",
+    "state": "Telangana",
+    "area": "Karimnagar",
+    "symptoms": ["Headache", "Fatigue"]
+  },
+  {
+    "id": 24,
+    "name": "Anusha Singh",
+    "state": "Telangana",
+    "area": "Nizamabad",
+    "symptoms": ["Fever", "Cough"]
+  },
+  {
+    "id": 25,
+    "name": "Ajay Deshmukh",
+    "state": "Maharashtra",
+    "area": "Nagpur",
+    "symptoms": ["Cough", "Fatigue"]
+  },
+  {
+    "id": 26,
+    "name": "Priya Sharma",
+    "state": "Maharashtra",
+    "area": "Pune",
+    "symptoms": ["Headache", "Nausea"]
+  },
+  {
+    "id": 27,
+    "name": "Rohan Patil",
+    "state": "Maharashtra",
+    "area": "Mumbai",
+    "symptoms": ["Fever", "Body Ache"]
+  },
+  {
+    "id": 28,
+    "name": "Sneha Kulkarni",
+    "state": "Maharashtra",
+    "area": "Melghat",
+    "symptoms": ["Skin Rash", "Itching"]
+  },
+  {
+    "id": 29,
+    "name": "Ramesh Verma",
+    "state": "Delhi",
+    "area": "Chandni Chowk",
+    "symptoms": ["Fever", "Headache"]
+  },
+  {
+    "id": 30,
+    "name": "Kiran Gupta",
+    "state": "Delhi",
+    "area": "Dwarka",
+    "symptoms": ["Cold", "Dizziness"]
+  },
+  {
+    "id": 31,
+    "name": "Manoj Kumar",
+    "state": "Delhi",
+    "area": "Saket",
+    "symptoms": ["Shortness of Breath", "Chest Pain"]
+  },
+  {
+    "id": 32,
+    "name": "Neha Kapoor",
+    "state": "Delhi",
+    "area": "Janakpuri",
+    "symptoms": ["Cough", "Cold"]
+  },
+  {
+    "id": 33,
+    "name": "Anita Sharma",
+    "state": "Madhya Pradesh",
+    "area": "Indore",
+    "symptoms": ["Headache", "Fatigue"]
+  },
+  {
+    "id": 34,
+    "name": "Vivek Jain",
+    "state": "Madhya Pradesh",
+    "area": "Bhopal",
+    "symptoms": ["Cough", "Fever"]
+  },
+  {
+    "id": 35,
+    "name": "Meena Chaturvedi",
+    "state": "Madhya Pradesh",
+    "area": "Jabalpur",
+    "symptoms": ["Shortness of Breath", "Cold"]
+  },
+  {
+    "id": 36,
+    "name": "Rajesh Singh",
+    "state": "Madhya Pradesh",
+    "area": "Mandla",
+    "symptoms": ["Fever", "Body Ache"]
+  },
+  {
+    "id": 37,
+    "name": "Asha Rao",
+    "state": "Karnataka",
+    "area": "Bangalore",
+    "symptoms": ["Cough", "Fever"]
+  },
+  {
+    "id": 38,
+    "name": "Ravi Iyer",
+    "state": "Karnataka",
+    "area": "Mysore",
+    "symptoms": ["Fatigue", "Headache"]
+  },
+  {
+    "id": 39,
+    "name": "Harish Nayak",
+    "state": "Karnataka",
+    "area": "Hubli",
+    "symptoms": ["Cold", "Body Ache"]
+  },
+  {
+    "id": 40,
+    "name": "Vikram Shetty",
+    "state": "Karnataka",
+    "area": "Agumbe",
+    "symptoms": ["Chills", "Dizziness"]
   }
-];
+  ];
