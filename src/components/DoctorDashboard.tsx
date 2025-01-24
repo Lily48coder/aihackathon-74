@@ -40,8 +40,8 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Welcome, Dr. {doctor.name}</h1>
-            <p className="text-gray-600">{doctor.department} - {doctor.hospital}</p>
+            <h1 className="text-3xl font-bold text-blue-900">Welcome, Dr. {doctor.name}</h1>
+            <p className="text-blue-600">{doctor.department} - {doctor.hospital}</p>
           </div>
           
           <DropdownMenu>
@@ -58,11 +58,11 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </DropdownMenu>
         </div>
 
-        <Card className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4 bg-blue-50/50">
           <div className="space-y-2">
-            <Label>State</Label>
+            <Label className="text-blue-700">State</Label>
             <Select onValueChange={setSelectedState}>
-              <SelectTrigger className="bg-white">
+              <SelectTrigger className="bg-white border-blue-200">
                 <SelectValue placeholder="Select state" />
               </SelectTrigger>
               <SelectContent>
@@ -76,12 +76,12 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Area</Label>
+            <Label className="text-blue-700">Area</Label>
             <Select 
               onValueChange={setSelectedArea}
               disabled={!selectedState}
             >
-              <SelectTrigger className="bg-white">
+              <SelectTrigger className="bg-white border-blue-200">
                 <SelectValue placeholder="Select area" />
               </SelectTrigger>
               <SelectContent>
@@ -95,9 +95,9 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label>Symptoms</Label>
+            <Label className="text-blue-700">Symptoms</Label>
             <Select onValueChange={setSelectedSymptom}>
-              <SelectTrigger className="bg-white">
+              <SelectTrigger className="bg-white border-blue-200">
                 <SelectValue placeholder="Select symptom" />
               </SelectTrigger>
               <SelectContent>
@@ -111,16 +111,16 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Patients</h2>
+        <Card className="p-6 bg-white">
+          <h2 className="text-xl font-semibold mb-4 text-blue-900">Patients</h2>
           <div className="space-y-4">
             {filteredPatients.map((patient) => (
-              <Card key={patient.id} className="p-4">
-                <h3 className="font-medium">{patient.name}</h3>
-                <p className="text-sm text-gray-600">
+              <Card key={patient.id} className="p-4 bg-blue-50/30">
+                <h3 className="font-medium text-blue-800">{patient.name}</h3>
+                <p className="text-sm text-blue-600">
                   {patient.state}, {patient.area}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-blue-600">
                   Symptoms: {patient.symptoms.join(", ")}
                 </p>
               </Card>
@@ -128,10 +128,10 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
           </div>
           
           <div className="mt-6 flex justify-between items-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-blue-600">
               Total Patients: {filteredPatients.length}
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-blue-600">
               Percentage: {patientPercentage.toFixed(1)}%
             </p>
           </div>

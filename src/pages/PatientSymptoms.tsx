@@ -46,7 +46,7 @@ const PatientSymptoms = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-4">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-4" data-patient-interface>
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
         <h1 className="text-2xl font-bold text-center text-green-800">Symptoms</h1>
         
@@ -57,7 +57,7 @@ const PatientSymptoms = () => {
               value={selectedCategory}
               onValueChange={setSelectedCategory}
             >
-              <SelectTrigger className="w-full bg-white border-green-200 focus:border-green-400 focus:ring-green-400">
+              <SelectTrigger className="w-full select-trigger">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
               <SelectContent>
@@ -77,7 +77,7 @@ const PatientSymptoms = () => {
                 value={selectedSymptom}
                 onValueChange={setSelectedSymptom}
               >
-                <SelectTrigger className="w-full bg-white border-green-200 focus:border-green-400 focus:ring-green-400">
+                <SelectTrigger className="w-full select-trigger">
                   <SelectValue placeholder="Select a symptom" />
                 </SelectTrigger>
                 <SelectContent>
