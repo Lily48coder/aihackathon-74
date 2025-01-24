@@ -74,13 +74,13 @@ const PatientRisks = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-4">
-      <Card className="max-w-4xl mx-auto p-6 space-y-6">
+      <Card className="max-w-4xl mx-auto p-6 space-y-6 bg-white/90 backdrop-blur-sm border-green-100">
         <h1 className="text-2xl font-bold text-center text-green-800">Potential Risks</h1>
         
         <div className="space-y-6">
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-green-700">Risk Assessment</h2>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 bg-green-50 p-4 rounded-lg">
               <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
                 {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
               </p>
@@ -90,19 +90,21 @@ const PatientRisks = () => {
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-green-700">Potential Issues</h2>
-            <ul className="space-y-2">
-              {assessment.potentialIssues.map((issue, index) => (
-                <li key={index} className="flex items-center space-x-2">
-                  <span className="h-2 w-2 rounded-full bg-green-500"></span>
-                  <span className="text-green-700">{issue}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <ul className="space-y-2">
+                {assessment.potentialIssues.map((issue, index) => (
+                  <li key={index} className="flex items-center space-x-2">
+                    <span className="h-2 w-2 rounded-full bg-green-500"></span>
+                    <span className="text-green-700">{issue}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-green-700">Contact Information</h2>
-            <div className="space-y-2 text-green-700">
+            <div className="space-y-2 text-green-700 bg-green-50 p-4 rounded-lg">
               <p>National Health Support Helpline: <span className="font-medium">91-20-2770 3000</span></p>
               <p>State Helpline: <span className="font-medium">1075748558</span></p>
             </div>
