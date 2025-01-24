@@ -12,7 +12,7 @@ const RISK_COLORS = {
 interface RiskAssessment {
   level: keyof typeof RISK_COLORS;
   percentage: number;
-  potentialDiseases: string[];
+  potentialIssues: string[];
 }
 
 const PatientRisks = () => {
@@ -21,7 +21,7 @@ const PatientRisks = () => {
   const [assessment, setAssessment] = useState<RiskAssessment>({
     level: "low",
     percentage: 0,
-    potentialDiseases: []
+    potentialIssues: []
   });
 
   useEffect(() => {
@@ -31,38 +31,59 @@ const PatientRisks = () => {
 
       let riskLevel: keyof typeof RISK_COLORS = "low";
       let riskPercentage = 0;
-      let diseases: string[] = [];
+      let issues: string[] = [];
 
-      if (selectedCategory === "Cardiovascular Diseases") {
-        riskLevel = "high";
-        riskPercentage = 75;
-        diseases = [
-          "Coronary Artery Disease",
-          "Hypertensive Heart Disease",
-          "Cardiac Arrhythmia"
-        ];
-      } else if (selectedCategory === "Respiratory Diseases") {
-        riskLevel = "intermediate";
-        riskPercentage = 45;
-        diseases = [
-          "Chronic Bronchitis",
-          "Bronchial Asthma",
-          "Upper Respiratory Tract Infection"
-        ];
-      } else {
-        riskLevel = "low";
-        riskPercentage = 25;
-        diseases = [
-          "Mild Inflammatory Condition",
-          "Stress-Related Disorder",
-          "Minor Systemic Infection"
-        ];
+      switch(selectedSymptom) {
+        case "Heart Attack":
+          riskLevel = "high";
+          riskPercentage = 85;
+          issues = [
+            "Severe coronary artery blockage",
+            "Critical myocardial damage risk",
+            "Immediate cardiac intervention needed"
+          ];
+          break;
+        case "Stroke":
+          riskLevel = "high";
+          riskPercentage = 80;
+          issues = [
+            "Cerebral blood flow disruption",
+            "Potential neurological damage",
+            "Emergency intervention required"
+          ];
+          break;
+        case "Pneumonia":
+          riskLevel = "intermediate";
+          riskPercentage = 60;
+          issues = [
+            "Respiratory infection present",
+            "Lung inflammation detected",
+            "Antibiotic treatment needed"
+          ];
+          break;
+        case "Asthma":
+          riskLevel = "intermediate";
+          riskPercentage = 50;
+          issues = [
+            "Bronchial inflammation",
+            "Airway constriction",
+            "Inhaler therapy recommended"
+          ];
+          break;
+        default:
+          riskLevel = "low";
+          riskPercentage = 30;
+          issues = [
+            "Mild condition detected",
+            "Regular monitoring advised",
+            "Preventive care recommended"
+          ];
       }
 
       setAssessment({
         level: riskLevel,
         percentage: riskPercentage,
-        potentialDiseases: diseases
+        potentialIssues: issues
       });
     };
 
@@ -76,22 +97,22 @@ const PatientRisks = () => {
         
         <div className="space-y-6">
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Symptoms</h2>
+            <h2 className="text-xl font-semibold">Severity Assessment</h2>
             <div className="flex items-center space-x-2">
               <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
-                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
+                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Severity
               </p>
               <span className="text-gray-500">({assessment.percentage}%)</span>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Potential Diseases</h2>
+            <h2 className="text-xl font-semibold">Medical Observations</h2>
             <ul className="space-y-2">
-              {assessment.potentialDiseases.map((disease, index) => (
+              {assessment.potentialIssues.map((issue, index) => (
                 <li key={index} className="flex items-center space-x-2">
                   <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-                  <span>{disease}</span>
+                  <span>{issue}</span>
                 </li>
               ))}
             </ul>
