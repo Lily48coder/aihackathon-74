@@ -73,36 +73,36 @@ const PatientRisks = () => {
   }, [location.state]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Potential Risks</h1>
+        <h1 className="text-2xl font-bold text-center text-green-800">Potential Risks</h1>
         
         <div className="space-y-6">
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Risk Assessment</h2>
+            <h2 className="text-xl font-semibold text-green-700">Risk Assessment</h2>
             <div className="flex items-center space-x-2">
               <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
                 {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
               </p>
-              <span className="text-gray-500">({assessment.percentage}%)</span>
+              <span className="text-green-600">({assessment.percentage}%)</span>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Potential Issues</h2>
+            <h2 className="text-xl font-semibold text-green-700">Potential Issues</h2>
             <ul className="space-y-2">
               {assessment.potentialIssues.map((issue, index) => (
                 <li key={index} className="flex items-center space-x-2">
-                  <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-                  <span>{issue}</span>
+                  <span className="h-2 w-2 rounded-full bg-green-500"></span>
+                  <span className="text-green-700">{issue}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Contact Information</h2>
-            <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-green-700">Contact Information</h2>
+            <div className="space-y-2 text-green-700">
               <p>National Health Support Helpline: <span className="font-medium">91-20-2770 3000</span></p>
               <p>State Helpline: <span className="font-medium">1075748558</span></p>
             </div>
@@ -112,6 +112,7 @@ const PatientRisks = () => {
             <Button 
               variant="outline"
               onClick={() => navigate(-1)}
+              className="border-green-600 text-green-600 hover:bg-green-50"
             >
               Back
             </Button>

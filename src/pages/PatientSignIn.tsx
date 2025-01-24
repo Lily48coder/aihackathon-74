@@ -37,24 +37,25 @@ const PatientSignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Patient Sign In</h1>
+        <h1 className="text-2xl font-bold text-center text-green-800">Patient Sign In</h1>
         
         <form onSubmit={handleSignIn} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="username">Username</Label>
+            <Label htmlFor="username" className="text-green-700">Username</Label>
             <Input
               id="username"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              className="border-green-200 focus:border-green-400 focus:ring-green-400"
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-green-700">Password</Label>
             <Input
               id="password"
               type="password"
@@ -62,26 +63,30 @@ const PatientSignIn = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="border-green-200 focus:border-green-400 focus:ring-green-400"
             />
           </div>
 
           <Button
             type="button"
             variant="link"
-            className="px-0"
+            className="px-0 text-green-600 hover:text-green-700"
             onClick={handleForgotPassword}
           >
             Forgot password?
           </Button>
 
-          <Button type="submit" className="w-full">
+          <Button 
+            type="submit" 
+            className="w-full bg-green-600 hover:bg-green-700"
+          >
             Sign In
           </Button>
         </form>
 
         <Button 
           variant="outline" 
-          className="w-full"
+          className="w-full border-green-600 text-green-600 hover:bg-green-50"
           onClick={() => navigate(-1)}
         >
           Back

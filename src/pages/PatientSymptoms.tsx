@@ -46,18 +46,18 @@ const PatientSymptoms = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Symptoms</h1>
+        <h1 className="text-2xl font-bold text-center text-green-800">Symptoms</h1>
         
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="category">Disease Category</Label>
+            <Label htmlFor="category" className="text-green-700">Disease Category</Label>
             <Select
               value={selectedCategory}
               onValueChange={setSelectedCategory}
             >
-              <SelectTrigger className="w-full bg-white">
+              <SelectTrigger className="w-full bg-white border-green-200 focus:border-green-400 focus:ring-green-400">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
               <SelectContent>
@@ -72,12 +72,12 @@ const PatientSymptoms = () => {
 
           {selectedCategory && (
             <div className="space-y-2">
-              <Label htmlFor="symptom">Specific Symptom</Label>
+              <Label htmlFor="symptom" className="text-green-700">Specific Symptom</Label>
               <Select
                 value={selectedSymptom}
                 onValueChange={setSelectedSymptom}
               >
-                <SelectTrigger className="w-full bg-white">
+                <SelectTrigger className="w-full bg-white border-green-200 focus:border-green-400 focus:ring-green-400">
                   <SelectValue placeholder="Select a symptom" />
                 </SelectTrigger>
                 <SelectContent>
@@ -95,12 +95,14 @@ const PatientSymptoms = () => {
             <Button 
               variant="outline"
               onClick={() => navigate(-1)}
+              className="border-green-600 text-green-600 hover:bg-green-50"
             >
               Back
             </Button>
             <Button 
               onClick={handleNext}
               disabled={!selectedSymptom}
+              className="bg-green-600 hover:bg-green-700 disabled:bg-green-300"
             >
               Analyze
             </Button>
