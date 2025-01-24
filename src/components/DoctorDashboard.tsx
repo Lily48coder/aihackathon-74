@@ -24,6 +24,9 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedSymptom, setSelectedSymptom] = useState("");
   
+  const selectedStateData = STATES.find(state => state.name === selectedState);
+  const areas = selectedStateData?.areas || [];
+  
   const filteredPatients = MOCK_PATIENTS.filter(patient => {
     return (!selectedState || patient.state === selectedState) &&
            (!selectedArea || patient.area === selectedArea) &&
@@ -31,8 +34,6 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
   });
 
   const patientPercentage = (filteredPatients.length / MOCK_PATIENTS.length) * 100;
-
-  const selectedStateData = STATES.find(state => state.name === selectedState);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
@@ -84,11 +85,11 @@ const DoctorDashboard = ({ doctor }: DoctorDashboardProps) => {
                 <SelectValue placeholder="Select area" />
               </SelectTrigger>
               <SelectContent>
-                {selectedStateData && (
-                  <SelectItem value={selectedStateData.area}>
-                    {selectedStateData.area}
+                {areas.map((area) => (
+                  <SelectItem key={area} value={area}>
+                    {area}
                   </SelectItem>
-                )}
+                ))}
               </SelectContent>
             </Select>
           </div>
