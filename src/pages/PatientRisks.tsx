@@ -25,41 +25,59 @@ const PatientRisks = () => {
   });
 
   useEffect(() => {
-    // In a real application, this would be an API call to an AI service
-    // For now, we'll simulate the AI analysis based on symptoms
     const analyzeSymptoms = () => {
       const selectedCategory = location.state?.selectedCategory;
       const selectedSymptom = location.state?.selectedSymptom;
 
-      // Simulate AI analysis
       let riskLevel: keyof typeof RISK_COLORS = "low";
       let riskPercentage = 0;
       let issues: string[] = [];
 
-      if (selectedCategory === "Cardiovascular Diseases") {
-        riskLevel = "high";
-        riskPercentage = 75;
-        issues = [
-          "Potential coronary artery disease",
-          "Risk of hypertensive crisis",
-          "Possible cardiac arrhythmia"
-        ];
-      } else if (selectedCategory === "Respiratory Diseases") {
-        riskLevel = "intermediate";
-        riskPercentage = 45;
-        issues = [
-          "Chronic bronchitis indicators",
-          "Early signs of asthma",
-          "Possible upper respiratory infection"
-        ];
-      } else {
-        riskLevel = "low";
-        riskPercentage = 25;
-        issues = [
-          "Minor inflammatory condition",
-          "Temporary systemic response",
-          "Stress-related symptoms"
-        ];
+      switch(selectedSymptom) {
+        case "Heart Attack":
+          riskLevel = "high";
+          riskPercentage = 85;
+          issues = [
+            "Severe coronary artery blockage",
+            "Critical myocardial damage risk",
+            "Immediate cardiac intervention needed"
+          ];
+          break;
+        case "Stroke":
+          riskLevel = "high";
+          riskPercentage = 80;
+          issues = [
+            "Cerebral blood flow disruption",
+            "Potential neurological damage",
+            "Emergency intervention required"
+          ];
+          break;
+        case "Pneumonia":
+          riskLevel = "intermediate";
+          riskPercentage = 60;
+          issues = [
+            "Respiratory infection present",
+            "Lung inflammation detected",
+            "Antibiotic treatment needed"
+          ];
+          break;
+        case "Asthma":
+          riskLevel = "intermediate";
+          riskPercentage = 50;
+          issues = [
+            "Bronchial inflammation",
+            "Airway constriction",
+            "Inhaler therapy recommended"
+          ];
+          break;
+        default:
+          riskLevel = "low";
+          riskPercentage = 30;
+          issues = [
+            "Mild condition detected",
+            "Regular monitoring advised",
+            "Preventive care recommended"
+          ];
       }
 
       setAssessment({
@@ -75,21 +93,21 @@ const PatientRisks = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Potential Risks</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-900">Analysis</h1>
         
         <div className="space-y-6">
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Risk Assessment</h2>
+            <h2 className="text-xl font-semibold">Severity Assessment</h2>
             <div className="flex items-center space-x-2">
               <p className={`text-lg font-medium ${RISK_COLORS[assessment.level]}`}>
-                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Risk
+                {assessment.level.charAt(0).toUpperCase() + assessment.level.slice(1)} Severity
               </p>
               <span className="text-gray-500">({assessment.percentage}%)</span>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Potential Issues</h2>
+            <h2 className="text-xl font-semibold">Medical Observations</h2>
             <ul className="space-y-2">
               {assessment.potentialIssues.map((issue, index) => (
                 <li key={index} className="flex items-center space-x-2">
