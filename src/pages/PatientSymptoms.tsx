@@ -12,26 +12,121 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const DISEASE_CATEGORIES = {
-  "Infectious Diseases": ["Viral Infections", "Bacterial Infections", "Fungal Infections", "Parasitic Infections"],
-  "Chronic Diseases": ["Diabetes", "Hypertension", "Asthma", "Chronic Obstructive Pulmonary Disease (COPD)"],
-  "Cardiovascular Diseases": ["Heart Attack", "Stroke", "Arrhythmias", "Heart Failure"],
-  "Neurological Diseases": ["Migraine", "Parkinson's Disease", "Epilepsy", "Multiple Sclerosis"],
-  "Gastrointestinal Diseases": ["Gastritis", "Irritable Bowel Syndrome (IBS)", "Hepatitis", "Peptic Ulcer Disease"],
-  "Autoimmune Diseases": ["Rheumatoid Arthritis", "Lupus", "Multiple Sclerosis", "Celiac Disease"],
-  "Cancers": ["Lung Cancer", "Breast Cancer", "Colon Cancer", "Prostate Cancer"],
-  "Mental Health Disorders": ["Depression", "Anxiety Disorders", "Schizophrenia", "Bipolar Disorder"],
-  "Endocrine Disorders": ["Hypothyroidism", "Hyperthyroidism", "Cushing's Syndrome", "Addison's Disease"],
-  "Skin Diseases": ["Psoriasis", "Eczema", "Acne", "Rosacea"],
-  "Rare Diseases": ["Cystic Fibrosis", "Amyotrophic Lateral Sclerosis (ALS)", "Huntington's Disease", "Marfan Syndrome"],
-  "Musculoskeletal Disorders": ["Osteoporosis", "Osteoarthritis", "Fibromyalgia", "Gout"],
-  "Genetic Disorders": ["Down Syndrome", "Sickle Cell Anemia", "Thalassemia", "Hemophilia"],
-  "Eye Diseases": ["Cataracts", "Glaucoma", "Macular Degeneration", "Diabetic Retinopathy"],
-  "Ear, Nose, and Throat Disorders": ["Sinusitis", "Otitis Media", "Tinnitus", "Meniere's Disease"],
-  "Pediatric Diseases": ["Measles", "Mumps", "Chickenpox", "Kawasaki Disease"],
-  "Geriatric Diseases": ["Alzheimer's Disease", "Osteoporosis", "Age-Related Macular Degeneration", "Dementia"],
-  "Reproductive System Diseases": ["Polycystic Ovary Syndrome (PCOS)", "Endometriosis", "Erectile Dysfunction", "Prostatitis"],
-  "Blood Disorders": ["Anemia", "Leukemia", "Lymphoma", "Hemophilia"],
-  "Respiratory Diseases": ["Pneumonia", "Tuberculosis", "Chronic Bronchitis", "Pulmonary Fibrosis"]
+  "Heart Problems": [
+    "Chest pain",
+    "Breathlessness",
+    "Swelling in legs",
+    "Tiredness",
+    "Dizziness"
+  ],
+  "Brain Problems": [
+    "Sudden weakness or numbness especially on one side",
+    "Difficulty speaking or understanding",
+    "Severe headache",
+    "Fits or seizures",
+    "Memory loss or confusion",
+    "Loss of balance"
+  ],
+  "Lung Problems": [
+    "Difficulty breathing",
+    "Persistent cough",
+    "Chest tightness",
+    "Coughing up blood",
+    "Wheezing sound while breathing",
+    "Frequent infections"
+  ],
+  "Stomach and Digestive Problems": [
+    "Stomach pain",
+    "Loose motions or diarrhea",
+    "Constipation",
+    "Bloating or gas",
+    "Burning sensation in the stomach",
+    "Loss of appetite"
+  ],
+  "Infectious Problems": [
+    "Fever",
+    "Body ache",
+    "Chills",
+    "Headache",
+    "Weakness",
+    "Sweating"
+  ],
+  "Skin Problems": [
+    "Itchy skin",
+    "Redness",
+    "Dry patches",
+    "Swelling or blisters",
+    "Cracking or peeling skin"
+  ],
+  "Bone and Joint Problems": [
+    "Joint pain",
+    "Swelling in joints",
+    "Stiffness in movement",
+    "Backache",
+    "Weakness in the affected area"
+  ],
+  "Eye and Vision Problems": [
+    "unclear vision",
+    "Pain in the eyes",
+    "Sensitivity to light",
+    "Red eyes",
+    "Difficulty seeing at night"
+  ],
+  "Kidney and Urinary Problems": [
+    "Pain in the lower back",
+    "Burning sensation while urinating",
+    "Frequent urination",
+    "Blood in urine",
+    "Cloudy or foul-smelling urine"
+  ],
+  "Reproductive and Sexual Health Problems": [
+    "Pain during menstruation",
+    "Missed periods",
+    "Unusual discharge",
+    "Pain during intercourse",
+    "Itching or irritation in the genital area"
+  ],
+  "Mental Health Problems": [
+    "Feeling sad",
+    "Loss of interest in activities",
+    "Sleeplessness",
+    "oversleeping",
+    "irritable",
+    "Difficulty concentrating"
+  ],
+  "Diabetes Problems": [
+    "Excessive thirst",
+    "Frequent urination",
+    "Feeling tired or",
+    "Weight loss",
+    "Blurred vision"
+  ],
+  "Cancer Problems": [
+    "Lumps or swelling",
+    "Unexplained weight loss",
+    "Fatigue",
+    "Unusual bleeding",
+    "Persistent pain in specific areas"
+  ],
+  "Liver Problems": [
+    "Yellow eyes",
+    "Weakness",
+    "Loss of appetite",
+    "Swelling in the stomach",
+    "Nausea or vomiting"
+  ],
+  "Dental Problems": [
+    "Toothache",
+    "Swollen gums",
+    "Bad breath",
+    "Sensitivity to hot or cold foods"
+  ],
+  "Nutritional Deficiency Problems": [
+    "Pale skin",
+    "Weakness tiredness",
+    "Frequent illness or infections",
+    "Brittle nails"
+  ]
 };
 
 const PatientSymptoms = () => {
