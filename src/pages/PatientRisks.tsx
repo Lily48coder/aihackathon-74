@@ -37,13 +37,10 @@ const PatientRisks = () => {
   const [area, setArea] = useState("");
 
   useEffect(() => {
-    // In a real application, this would be an API call to an AI service
-    // For now, we'll simulate the AI analysis based on symptoms
     const analyzeSymptoms = () => {
       const selectedCategory = location.state?.selectedCategory;
       const selectedSymptom = location.state?.selectedSymptom;
 
-      // Simulate AI analysis
       let riskLevel: keyof typeof RISK_COLORS = "low";
       let riskPercentage = 0;
       let issues: string[] = [];
@@ -121,26 +118,30 @@ const PatientRisks = () => {
               </div>
             </div>
 
-            <div>
-              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
-              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-                <ul className="space-y-2">
-                  {SELECTED_VENUES.map((venue, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
-                      <span className="text-neutral-700">{venue}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            {state && area && (
+              <>
+                <div>
+                  <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
+                  <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                    <ul className="space-y-2">
+                      {SELECTED_VENUES.map((venue, index) => (
+                        <li key={index} className="flex items-center space-x-2">
+                          <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
+                          <span className="text-neutral-700">{venue}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-            <div>
-              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
-              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-                <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
-              </div>
-            </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
+                  <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                    <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
+                  </div>
+                </div>
+              </>
+            )}
 
             <Button 
               variant="outline"
