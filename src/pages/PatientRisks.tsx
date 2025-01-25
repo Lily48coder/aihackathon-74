@@ -25,6 +25,7 @@ const PatientRisks = () => {
     percentage: 0,
     potentialIssues: []
   });
+  const [showCamps, setShowCamps] = useState(false);
 
   useEffect(() => {
     // In a real application, this would be an API call to an AI service
@@ -75,15 +76,69 @@ const PatientRisks = () => {
   }, [location.state]);
 
   const handleCheckCamps = () => {
-    // Get user's state and area from localStorage (saved during sign-up)
-    const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
-    navigate('/camp-schedules', { 
-      state: { 
-        userState: userData.state,
-        userArea: userData.area 
-      } 
-    });
+    setShowCamps(true);
   };
+
+  const handleBack = () => {
+    setShowCamps(false);
+  };
+
+  const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
+
+  if (showCamps) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
+        <Card className="max-w-4xl mx-auto p-6 space-y-6 bg-white/90 backdrop-blur-sm border-neutral-200">
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Your Location</h2>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                <p><span className="font-medium">State:</span> {userData.state}</p>
+                <p><span className="font-medium">Area:</span> {userData.area}</p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                <ul className="space-y-2">
+                  {[
+                    "Government Schools",
+                    "Community Halls or Panchayat Offices",
+                    "Anganwadi Centers",
+                    "Health Sub-Centers",
+                    "Village Temples or Religious Centers",
+                    "Self-Help Group (SHG) Centers",
+                    "Fairgrounds or Marketplaces"
+                  ].map((venue, index) => (
+                    <li key={index} className="flex items-center space-x-2">
+                      <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
+                      <span className="text-neutral-700">{venue}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+
+            <Button 
+              variant="outline"
+              onClick={handleBack}
+              className="w-full border-neutral-600 text-neutral-600 hover:bg-[#ace3c0]/10"
+            >
+              Back to Potential Risks
+            </Button>
+          </div>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
