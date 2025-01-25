@@ -5,15 +5,12 @@ import { useNavigate, Navigate } from "react-router-dom";
 const Index = () => {
   const navigate = useNavigate();
   
+  // Check if this is the first load
   const isFirstLoad = !sessionStorage.getItem("hasVisited");
   if (isFirstLoad) {
     sessionStorage.setItem("hasVisited", "true");
     return <Navigate to="/splash" replace />;
   }
-
-  const handlePatientClick = () => {
-    navigate("/patient/language-select");
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
@@ -29,7 +26,7 @@ const Index = () => {
             Doctor
           </Button>
           <Button 
-            onClick={handlePatientClick}
+            onClick={() => navigate("/patient/welcome")}
             variant="outline"
             className="w-full border-[#22C55E] text-[#22C55E] hover:bg-[#22C55E]/10"
           >
