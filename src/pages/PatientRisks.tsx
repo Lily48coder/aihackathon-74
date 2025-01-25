@@ -75,7 +75,14 @@ const PatientRisks = () => {
   }, [location.state]);
 
   const handleCheckCamps = () => {
-    navigate('/camp-schedules');
+    // Get user's state and area from localStorage (saved during sign-up)
+    const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
+    navigate('/camp-schedules', { 
+      state: { 
+        userState: userData.state,
+        userArea: userData.area 
+      } 
+    });
   };
 
   return (
