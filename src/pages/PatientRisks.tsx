@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { STATES } from "@/data/medical";
+import { CAMP_SCHEDULES } from "@/data/medical";
 
 const RISK_COLORS = {
   low: "text-green-600",
@@ -33,17 +33,17 @@ const PatientRisks = () => {
     potentialIssues: []
   });
   const [showCamps, setShowCamps] = useState(false);
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedArea, setSelectedArea] = useState("");
-
-  const selectedStateData = STATES.find(state => state.name === selectedState);
-  const areas = selectedStateData?.areas || [];
+  const [state, setState] = useState("");
+  const [area, setArea] = useState("");
 
   useEffect(() => {
+    // In a real application, this would be an API call to an AI service
+    // For now, we'll simulate the AI analysis based on symptoms
     const analyzeSymptoms = () => {
       const selectedCategory = location.state?.selectedCategory;
       const selectedSymptom = location.state?.selectedSymptom;
 
+      // Simulate AI analysis
       let riskLevel: keyof typeof RISK_COLORS = "low";
       let riskPercentage = 0;
       let issues: string[] = [];
@@ -88,6 +88,10 @@ const PatientRisks = () => {
     setShowCamps(true);
   };
 
+  const handleBack = () => {
+    setShowCamps(false);
+  };
+
   if (showCamps) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
@@ -98,69 +102,49 @@ const PatientRisks = () => {
               <div className="bg-[#ace3c0]/10 p-4 rounded-lg space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">State</label>
-                  <Select onValueChange={setSelectedState} value={selectedState}>
-                    <SelectTrigger className="bg-white">
-                      <SelectValue placeholder="Select state" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {STATES.map((state) => (
-                        <SelectItem key={state.id} value={state.name}>
-                          {state.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Input
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    placeholder="Enter your state"
+                    className="w-full"
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Area</label>
-                  <Select 
-                    onValueChange={setSelectedArea} 
-                    value={selectedArea}
-                    disabled={!selectedState}
-                  >
-                    <SelectTrigger className="bg-white">
-                      <SelectValue placeholder={selectedState ? "Select area" : "Select state first"} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {areas.map((area) => (
-                        <SelectItem key={area} value={area}>
-                          {area}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Input
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    placeholder="Enter your area"
+                    className="w-full"
+                  />
                 </div>
               </div>
             </div>
 
-            {selectedState && selectedArea && (
-              <>
-                <div>
-                  <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
-                  <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-                    <ul className="space-y-2">
-                      {SELECTED_VENUES.map((venue, index) => (
-                        <li key={index} className="flex items-center space-x-2">
-                          <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
-                          <span className="text-neutral-700">{venue}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+            <div>
+              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                <ul className="space-y-2">
+                  {SELECTED_VENUES.map((venue, index) => (
+                    <li key={index} className="flex items-center space-x-2">
+                      <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
+                      <span className="text-neutral-700">{venue}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-                <div>
-                  <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
-                  <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-                    <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
-                  </div>
-                </div>
-              </>
-            )}
+            <div>
+              <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
+                <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
+              </div>
+            </div>
 
             <Button 
               variant="outline"
-              onClick={() => setShowCamps(false)}
+              onClick={handleBack}
               className="w-full border-neutral-600 text-neutral-600 hover:bg-[#ace3c0]/10"
             >
               Back to Potential Risks
