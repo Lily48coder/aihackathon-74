@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CAMP_SCHEDULES } from "@/data/medical";
@@ -74,14 +75,7 @@ const PatientRisks = () => {
   }, [location.state]);
 
   const handleCheckCamps = () => {
-    // Get user's state and area from localStorage (saved during sign-up)
-    const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
-    navigate('/camp-schedules', { 
-      state: { 
-        userState: userData.state,
-        userArea: userData.area 
-      } 
-    });
+    navigate('/camp-schedules');
   };
 
   return (
