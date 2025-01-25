@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { HOSPITALS, DEPARTMENTS } from "@/data/medical";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -124,26 +126,40 @@ const SignUp = () => {
 
           <div className="space-y-2">
             <Label htmlFor="hospital">Hospital</Label>
-            <Input
-              id="hospital"
-              name="hospital"
-              placeholder="Enter your hospital"
+            <Select 
               value={formData.hospital}
-              onChange={handleChange}
-              required
-            />
+              onValueChange={(value) => setFormData(prev => ({ ...prev, hospital: value }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select hospital" />
+              </SelectTrigger>
+              <SelectContent>
+                {HOSPITALS.map((hospital) => (
+                  <SelectItem key={hospital.id} value={hospital.name}>
+                    {hospital.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="department">Department</Label>
-            <Input
-              id="department"
-              name="department"
-              placeholder="Enter your department"
+            <Select
               value={formData.department}
-              onChange={handleChange}
-              required
-            />
+              onValueChange={(value) => setFormData(prev => ({ ...prev, department: value }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select department" />
+              </SelectTrigger>
+              <SelectContent>
+                {DEPARTMENTS.map((department) => (
+                  <SelectItem key={department} value={department}>
+                    {department}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <Button type="submit" className="w-full">
