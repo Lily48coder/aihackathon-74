@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { CAMP_SCHEDULES } from "@/data/medical";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { STATES } from "@/data/medical";
 
 const RISK_COLORS = {
   low: "text-green-600",
@@ -33,8 +33,11 @@ const PatientRisks = () => {
     potentialIssues: []
   });
   const [showCamps, setShowCamps] = useState(false);
-  const [state, setState] = useState("");
-  const [area, setArea] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedArea, setSelectedArea] = useState("");
+
+  const selectedStateData = STATES.find(state => state.name === selectedState);
+  const areas = selectedStateData?.areas || [];
 
   useEffect(() => {
     const analyzeSymptoms = () => {
@@ -85,10 +88,6 @@ const PatientRisks = () => {
     setShowCamps(true);
   };
 
-  const handleBack = () => {
-    setShowCamps(false);
-  };
-
   if (showCamps) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
@@ -99,26 +98,42 @@ const PatientRisks = () => {
               <div className="bg-[#ace3c0]/10 p-4 rounded-lg space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">State</label>
-                  <Input
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    placeholder="Enter your state"
-                    className="w-full"
-                  />
+                  <Select onValueChange={setSelectedState} value={selectedState}>
+                    <SelectTrigger className="bg-white">
+                      <SelectValue placeholder="Select state" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {STATES.map((state) => (
+                        <SelectItem key={state.id} value={state.name}>
+                          {state.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Area</label>
-                  <Input
-                    value={area}
-                    onChange={(e) => setArea(e.target.value)}
-                    placeholder="Enter your area"
-                    className="w-full"
-                  />
+                  <Select 
+                    onValueChange={setSelectedArea} 
+                    value={selectedArea}
+                    disabled={!selectedState}
+                  >
+                    <SelectTrigger className="bg-white">
+                      <SelectValue placeholder={selectedState ? "Select area" : "Select state first"} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {areas.map((area) => (
+                        <SelectItem key={area} value={area}>
+                          {area}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
             </div>
 
-            {state && area && (
+            {selectedState && selectedArea && (
               <>
                 <div>
                   <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
@@ -145,7 +160,7 @@ const PatientRisks = () => {
 
             <Button 
               variant="outline"
-              onClick={handleBack}
+              onClick={() => setShowCamps(false)}
               className="w-full border-neutral-600 text-neutral-600 hover:bg-[#ace3c0]/10"
             >
               Back to Potential Risks
