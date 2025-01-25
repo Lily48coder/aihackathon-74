@@ -28,8 +28,13 @@ export const TranslationProvider = ({ children }: { children: React.ReactNode })
     return translations[currentLanguage]?.[key] || key;
   };
 
+  const setLanguage = (lang: string) => {
+    setCurrentLanguage(lang);
+    localStorage.setItem("preferredLanguage", lang);
+  };
+
   return (
-    <TranslationContext.Provider value={{ t, currentLanguage, setLanguage: setCurrentLanguage }}>
+    <TranslationContext.Provider value={{ t, currentLanguage, setLanguage }}>
       {children}
     </TranslationContext.Provider>
   );

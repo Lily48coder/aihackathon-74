@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { useTranslation } from "@/context/TranslationContext";
 
 const INDIAN_LANGUAGES = [
   { code: "en", name: "English" },
@@ -21,18 +22,23 @@ const INDIAN_LANGUAGES = [
 
 const PatientLanguageSelect = () => {
   const navigate = useNavigate();
+  const { t, setLanguage } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState("en");
 
   const handleContinue = () => {
-    localStorage.setItem("preferredLanguage", selectedLanguage);
+    setLanguage(selectedLanguage);
     navigate("/patient/sign-in");
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-green-800">Select Your Language</h1>
-        <p className="text-center text-gray-600">Choose your preferred language</p>
+        <h1 className="text-2xl font-bold text-center text-green-800">
+          {t("Select Your Language")}
+        </h1>
+        <p className="text-center text-gray-600">
+          {t("Choose your preferred language")}
+        </p>
         
         <RadioGroup
           value={selectedLanguage}
@@ -53,7 +59,7 @@ const PatientLanguageSelect = () => {
           onClick={handleContinue}
           className="w-full bg-green-600 hover:bg-green-700"
         >
-          Continue
+          {t("Continue")}
         </Button>
 
         <Button 
@@ -61,7 +67,7 @@ const PatientLanguageSelect = () => {
           className="w-full border-green-600 text-green-600 hover:bg-green-50"
           onClick={() => navigate(-1)}
         >
-          Back
+          {t("Back")}
         </Button>
       </Card>
     </div>
