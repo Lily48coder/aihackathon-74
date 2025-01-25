@@ -1,66 +1,81 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Calendar } from "@/components/ui/calendar";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
-
-const LOCAL_VENUES = [
-  "Government Schools",
-  "Community Halls or Panchayat Offices",
-  "Anganwadi Centers",
-  "Health Sub-Centers",
-  "Village Temples or Religious Centers",
-  "Self-Help Group (SHG) Centers",
-  "Fairgrounds or Marketplaces"
-];
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { CAMP_SCHEDULES } from "@/data/medical";
+import { useToast } from "@/components/ui/use-toast";
 
 const CampSchedules = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
+  const { toast } = useToast();
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("");
+  const [date, setDate] = useState<Date>();
+
+  const handleSchedule = () => {
+    if (date) {
+      toast({
+        title: "Camp Scheduled Successfully!",
+        description: "A confirmation message has been sent to your registered mobile number.",
+      });
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
-      <Card className="max-w-4xl mx-auto p-6 space-y-6 bg-white/90 backdrop-blur-sm border-neutral-200">
-        <Button 
-          variant="ghost" 
-          className="mb-4"
-          onClick={() => navigate('/patient/risks')}
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Potential Risks
-        </Button>
-        
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-xl font-semibold text-neutral-800 mb-2">Your Location</h2>
-            <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-              <p><span className="font-medium">State:</span> {userData.state}</p>
-              <p><span className="font-medium">Area:</span> {userData.area}</p>
-            </div>
-          </div>
+    <div className="container mx-auto p-6">
+      <Button 
+        variant="ghost" 
+        className="mb-4"
+        onClick={() => navigate(-1)}
+      >
+        <ArrowLeft className="h-4 w-4 mr-2" />
+        Back
+      </Button>
+      
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Camp Schedules</h1>
+      </div>
 
-          <div>
-            <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
-            <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-              <ul className="space-y-2">
-                {LOCAL_VENUES.map((venue, index) => (
-                  <li key={index} className="flex items-center space-x-2">
-                    <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
-                    <span className="text-neutral-700">{venue}</span>
-                  </li>
-                ))}
-              </ul>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {CAMP_SCHEDULES.map((schedule, index) => (
+          <Card key={index} className="p-4">
+            <h3 className="font-semibold mb-2">{schedule.department}</h3>
+            <div className="text-sm space-y-1">
+              <p><span className="font-medium">Date:</span> {schedule.date}</p>
+              <p><span className="font-medium">Location:</span> {schedule.location}</p>
+              <p><span className="font-medium">Timing:</span> {schedule.timing}</p>
             </div>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-semibold text-neutral-800 mb-2">Camp Timings</h2>
-            <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-              <p className="text-neutral-700">8:00 AM - 5:00 PM</p>
-            </div>
-          </div>
-        </div>
-      </Card>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  className="mt-4 w-full"
+                  onClick={() => setSelectedDepartment(schedule.department)}
+                >
+                  Schedule Camp
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Schedule a New Camp for {selectedDepartment}</DialogTitle>
+                </DialogHeader>
+                <div className="flex flex-col gap-4">
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    className="rounded-md border"
+                  />
+                  <Button onClick={handleSchedule} disabled={!date}>
+                    Confirm Schedule
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
