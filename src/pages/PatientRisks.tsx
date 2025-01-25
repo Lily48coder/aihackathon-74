@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { CAMP_SCHEDULES } from "@/data/medical";
 
 const RISK_COLORS = {
   low: "text-green-600",
@@ -72,6 +73,17 @@ const PatientRisks = () => {
     analyzeSymptoms();
   }, [location.state]);
 
+  const handleCheckCamps = () => {
+    // Get user's state and area from localStorage (saved during sign-up)
+    const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
+    navigate('/camp-schedules', { 
+      state: { 
+        userState: userData.state,
+        userArea: userData.area 
+      } 
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6 bg-white/90 backdrop-blur-sm border-neutral-200">
@@ -100,6 +112,15 @@ const PatientRisks = () => {
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className="space-y-4">
+            <Button
+              className="w-full bg-[#ace3c0] hover:bg-[#ace3c0]/90 text-neutral-800"
+              onClick={handleCheckCamps}
+            >
+              Check Available Medical Camps
+            </Button>
           </div>
 
           <div className="space-y-4">
