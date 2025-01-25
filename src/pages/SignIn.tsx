@@ -13,39 +13,35 @@ const SignIn = () => {
   const { login, setUserData } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value.length < 4 || value.length > 13) {
+      setPasswordError("The password must contain 4 characters minimum and 13 maximum");
+    } else {
+      setPasswordError("");
+    }
+    setPassword(value);
+  };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would verify credentials here
-    // For now, we'll simulate getting the user data from the backend
-    const formData = JSON.parse(localStorage.getItem('signupData') || '{}');
-    const userData = {
-      name: formData.name || 'Sahiti Sri', // Fallback if no data
-      department: formData.department || 'Cardiology',
-      hospital: formData.hospital || 'City Hospital'
-    };
-    
-    setUserData(userData);
-    login();
-    toast({
-      title: "Successfully Signed In!",
-      description: "Welcome back to the platform.",
-    });
-    navigate("/dashboard");
-  };
-
-  const handleForgotPassword = () => {
-    if (email) {
+    if (!passwordError) {
+      const formData = JSON.parse(localStorage.getItem('signupData') || '{}');
+      const userData = {
+        name: formData.name || 'Sahiti Sri',
+        department: formData.department || 'Cardiology',
+        hospital: formData.hospital || 'City Hospital'
+      };
+      
+      setUserData(userData);
+      login();
       toast({
-        title: "Password Reset Email Sent",
-        description: "Please check your email for password reset instructions.",
+        title: "Successfully Signed In!",
+        description: "Welcome back to the platform.",
       });
-    } else {
-      toast({
-        title: "Email Required",
-        description: "Please enter your email address first.",
-        variant: "destructive",
-      });
+      navigate("/dashboard");
     }
   };
 
@@ -75,20 +71,16 @@ const SignIn = () => {
               type="password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               required
-              className="bg-white"
+              className={`bg-white ${
+                passwordError ? 'border-red-500 focus:border-red-500' : ''
+              }`}
             />
+            {passwordError && (
+              <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+            )}
           </div>
-
-          <Button
-            type="button"
-            variant="link"
-            className="px-0 text-[#0077B6]"
-            onClick={handleForgotPassword}
-          >
-            Forgot password?
-          </Button>
 
           <Button type="submit" className="w-full bg-[#0077B6] hover:bg-[#0077B6]/90">
             Sign In

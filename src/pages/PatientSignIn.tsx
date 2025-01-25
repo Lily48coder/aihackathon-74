@@ -11,28 +11,26 @@ const PatientSignIn = () => {
   const { toast } = useToast();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value.length < 4 || value.length > 13) {
+      setPasswordError("The password must contain 4 characters minimum and 13 maximum");
+    } else {
+      setPasswordError("");
+    }
+    setPassword(value);
+  };
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Successfully Signed In!",
-      description: "Welcome back to the platform.",
-    });
-    navigate("/patient/history");
-  };
-
-  const handleForgotPassword = () => {
-    if (username) {
+    if (!passwordError) {
       toast({
-        title: "Password Reset Email Sent",
-        description: "Please check your email for password reset instructions.",
+        title: "Successfully Signed In!",
+        description: "Welcome back to the platform.",
       });
-    } else {
-      toast({
-        title: "Username Required",
-        description: "Please enter your username first.",
-        variant: "destructive",
-      });
+      navigate("/patient/history");
     }
   };
 
@@ -61,20 +59,16 @@ const PatientSignIn = () => {
               type="password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               required
-              className="border-green-200 focus:border-green-400 focus:ring-green-400"
+              className={`border-green-200 focus:border-green-400 focus:ring-green-400 ${
+                passwordError ? 'border-red-500 focus:border-red-500' : ''
+              }`}
             />
+            {passwordError && (
+              <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+            )}
           </div>
-
-          <Button
-            type="button"
-            variant="link"
-            className="px-0 text-green-600 hover:text-green-700"
-            onClick={handleForgotPassword}
-          >
-            Forgot password?
-          </Button>
 
           <Button 
             type="submit" 

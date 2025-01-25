@@ -23,20 +23,44 @@ const PatientSignUp = () => {
     password: "",
   });
 
+  const [errors, setErrors] = useState({
+    password: "",
+    phone: false
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    
+    if (name === "password") {
+      if (value.length < 4 || value.length > 13) {
+        setErrors(prev => ({
+          ...prev,
+          password: "The password must contain 4 characters minimum and 13 maximum"
+        }));
+      } else {
+        setErrors(prev => ({ ...prev, password: "" }));
+      }
+    }
+
+    if (name === "phone") {
+      setErrors(prev => ({
+        ...prev,
+        phone: value.length !== 10
+      }));
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically check if the user already exists
-    // For now, we'll just show the success message
-    toast({
-      title: "Successfully Registered!",
-      description: "Please sign in with your new account.",
-    });
-    navigate("/patient/sign-in");
+    if (!errors.password && !errors.phone) {
+      toast({
+        title: "Successfully Registered!",
+        description: "Please sign in with your new account.",
+      });
+      navigate("/patient/sign-in");
+    }
   };
 
   const selectedState = STATES.find(state => state.name === formData.state);
@@ -109,6 +133,8 @@ const PatientSignUp = () => {
               value={formData.phone}
               onChange={handleChange}
               required
+              className={`${errors.phone ? 'border-red-500 focus:border-red-500' : ''}`}
+              maxLength={10}
             />
           </div>
 
@@ -169,7 +195,11 @@ const PatientSignUp = () => {
               value={formData.password}
               onChange={handleChange}
               required
+              className={`${errors.password ? 'border-red-500 focus:border-red-500' : ''}`}
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
           </div>
 
           <Button type="submit" className="w-full">
