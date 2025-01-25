@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -10,6 +11,12 @@ const RISK_COLORS = {
   intermediate: "text-orange-500",
   high: "text-red-600"
 };
+
+const SELECTED_VENUES = [
+  "Government Schools",
+  "Community Halls or Panchayat Offices",
+  "Anganwadi Centers"
+];
 
 interface RiskAssessment {
   level: keyof typeof RISK_COLORS;
@@ -26,6 +33,8 @@ const PatientRisks = () => {
     potentialIssues: []
   });
   const [showCamps, setShowCamps] = useState(false);
+  const [state, setState] = useState("");
+  const [area, setArea] = useState("");
 
   useEffect(() => {
     // In a real application, this would be an API call to an AI service
@@ -83,8 +92,6 @@ const PatientRisks = () => {
     setShowCamps(false);
   };
 
-  const userData = JSON.parse(localStorage.getItem('patientData') || '{}');
-
   if (showCamps) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
@@ -92,9 +99,25 @@ const PatientRisks = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-neutral-800 mb-2">Your Location</h2>
-              <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
-                <p><span className="font-medium">State:</span> {userData.state}</p>
-                <p><span className="font-medium">Area:</span> {userData.area}</p>
+              <div className="bg-[#ace3c0]/10 p-4 rounded-lg space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">State</label>
+                  <Input
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    placeholder="Enter your state"
+                    className="w-full"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Area</label>
+                  <Input
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    placeholder="Enter your area"
+                    className="w-full"
+                  />
+                </div>
               </div>
             </div>
 
@@ -102,15 +125,7 @@ const PatientRisks = () => {
               <h2 className="text-xl font-semibold text-neutral-800 mb-2">Available Venues</h2>
               <div className="bg-[#ace3c0]/10 p-4 rounded-lg">
                 <ul className="space-y-2">
-                  {[
-                    "Government Schools",
-                    "Community Halls or Panchayat Offices",
-                    "Anganwadi Centers",
-                    "Health Sub-Centers",
-                    "Village Temples or Religious Centers",
-                    "Self-Help Group (SHG) Centers",
-                    "Fairgrounds or Marketplaces"
-                  ].map((venue, index) => (
+                  {SELECTED_VENUES.map((venue, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <span className="h-2 w-2 rounded-full bg-[#ace3c0]"></span>
                       <span className="text-neutral-700">{venue}</span>
