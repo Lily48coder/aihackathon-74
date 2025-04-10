@@ -128,83 +128,83 @@ export const SYMPTOMS = [
   { id: 9, name: 'Nausea or Vomiting', category: 'General' },
   { id: 10, name: 'Loss of Appetite', category: 'General' },
   
-  // Respiratory Symptoms
-  { id: 11, name: 'Cough', category: 'Respiratory' },
-  { id: 12, name: 'Shortness of Breath', category: 'Respiratory' },
-  { id: 13, name: 'Wheezing', category: 'Respiratory' },
-  { id: 14, name: 'Chest Pain or Tightness', category: 'Respiratory' },
-  { id: 15, name: 'Sore Throat', category: 'Respiratory' },
-  { id: 16, name: 'Runny or Stuffy Nose', category: 'Respiratory' },
-  { id: 17, name: 'Sneezing', category: 'Respiratory' },
-  { id: 18, name: 'Hoarseness', category: 'Respiratory' },
+ // Lung Problems
+{ id: 11, name: 'Cough', category: 'Lung Problems' },
+{ id: 12, name: 'Shortness of Breath', category: 'Lung Problems' },
+{ id: 13, name: 'Wheezing', category: 'Lung Problems' },
+{ id: 14, name: 'Chest Pain or Tightness', category: 'Lung Problems' },
+{ id: 15, name: 'Sore Throat', category: 'Lung Problems' },
+{ id: 16, name: 'Runny or Stuffy Nose', category: 'Lung Problems' },
+{ id: 17, name: 'Sneezing', category: 'Lung Problems' },
+{ id: 18, name: 'Hoarseness', category: 'Lung Problems' },
 
-  // Cardiovascular Symptoms
-  { id: 19, name: 'Palpitations (Irregular Heartbeats)', category: 'Cardiovascular' },
-  { id: 20, name: 'Swelling in the Legs or Feet', category: 'Cardiovascular' },
-  { id: 21, name: 'Chest Pain or Discomfort', category: 'Cardiovascular' },
-  { id: 22, name: 'Fainting or Near-Fainting', category: 'Cardiovascular' },
-  { id: 23, name: 'Cold Extremities', category: 'Cardiovascular' },
+// Heart Problems
+{ id: 19, name: 'Palpitations (Irregular Heartbeats)', category: 'Heart Problems' },
+{ id: 20, name: 'Swelling in the Legs or Feet', category: 'Heart Problems' },
+{ id: 21, name: 'Chest Pain or Discomfort', category: 'Heart Problems' },
+{ id: 22, name: 'Fainting or Near-Fainting', category: 'Heart Problems' },
+{ id: 23, name: 'Cold Extremities', category: 'Heart Problems' },
 
-  // Digestive Symptoms
-  { id: 24, name: 'Abdominal Pain or Cramping', category: 'Digestive' },
-  { id: 25, name: 'Diarrhea or Constipation', category: 'Digestive' },
-  { id: 26, name: 'Bloating', category: 'Digestive' },
-  { id: 27, name: 'Heartburn or Acid Reflux', category: 'Digestive' },
-  { id: 28, name: 'Gastrointestinal Bleeding (e.g., Blood in Stool or Vomit)', category: 'Digestive' },
-  { id: 29, name: 'Jaundice (Yellowing of the Skin or Eyes)', category: 'Digestive' },
-  { id: 30, name: 'Indigestion', category: 'Digestive' },
+// Stomach and Digestive Problems
+{ id: 24, name: 'Abdominal Pain or Cramping', category: 'Stomach and Digestive Problems' },
+{ id: 25, name: 'Diarrhea or Constipation', category: 'Stomach and Digestive Problems' },
+{ id: 26, name: 'Bloating', category: 'Stomach and Digestive Problems' },
+{ id: 27, name: 'Heartburn or Acid Reflux', category: 'Stomach and Digestive Problems' },
+{ id: 28, name: 'Gastrointestinal Bleeding (e.g., Blood in Stool or Vomit)', category: 'Stomach and Digestive Problems' },
+{ id: 29, name: 'Jaundice (Yellowing of the Skin or Eyes)', category: 'Liver Problems' },
+{ id: 30, name: 'Indigestion', category: 'Stomach and Digestive Problems' },
 
-  // Neurological Symptoms
-  { id: 31, name: 'Memory Loss or Confusion', category: 'Neurological' },
-  { id: 32, name: 'Seizures', category: 'Neurological' },
-  { id: 33, name: 'Numbness or Tingling', category: 'Neurological' },
-  { id: 34, name: 'Loss of Coordination or Balance', category: 'Neurological' },
-  { id: 35, name: 'Visual Changes (Blurry Vision, Double Vision)', category: 'Neurological' },
-  { id: 36, name: 'Slurred Speech', category: 'Neurological' },
-  { id: 37, name: 'Sleep Disturbances (Insomnia or Hypersomnia)', category: 'Neurological' },
+// Brain Problems
+{ id: 31, name: 'Memory Loss or Confusion', category: 'Brain Problems' },
+{ id: 32, name: 'Seizures', category: 'Brain Problems' },
+{ id: 33, name: 'Numbness or Tingling', category: 'Brain Problems' },
+{ id: 34, name: 'Loss of Coordination or Balance', category: 'Brain Problems' },
+{ id: 35, name: 'Visual Changes (Blurry Vision, Double Vision)', category: 'Eye and Vision Problems' },
+{ id: 36, name: 'Slurred Speech', category: 'Brain Problems' },
+{ id: 37, name: 'Sleep Disturbances (Insomnia or Hypersomnia)', category: 'Mental Health Problems' },
 
-  // Skin Symptoms
-  { id: 38, name: 'Rashes or Hives', category: 'Skin' },
-  { id: 39, name: 'Itching', category: 'Skin' },
-  { id: 40, name: 'Paleness or Cyanosis (Bluish Skin)', category: 'Skin' },
-  { id: 41, name: 'Excessive Sweating', category: 'Skin' },
-  { id: 42, name: 'Bruising or Bleeding', category: 'Skin' },
-  { id: 43, name: 'Dry or Flaky Skin', category: 'Skin' },
-  { id: 44, name: 'Hair Loss', category: 'Skin' },
+// Skin Problems
+{ id: 38, name: 'Rashes or Hives', category: 'Skin Problems' },
+{ id: 39, name: 'Itching', category: 'Skin Problems' },
+{ id: 40, name: 'Paleness or Cyanosis (Bluish Skin)', category: 'Skin Problems' },
+{ id: 41, name: 'Excessive Sweating', category: 'Skin Problems' },
+{ id: 42, name: 'Bruising or Bleeding', category: 'Skin Problems' },
+{ id: 43, name: 'Dry or Flaky Skin', category: 'Skin Problems' },
+{ id: 44, name: 'Hair Loss', category: 'Skin Problems' },
 
-  // Urinary Symptoms
-  { id: 45, name: 'Frequent Urination', category: 'Urinary' },
-  { id: 46, name: 'Painful Urination', category: 'Urinary' },
-  { id: 47, name: 'Blood in Urine', category: 'Urinary' },
-  { id: 48, name: 'Dark or Cloudy Urine', category: 'Urinary' },
-  { id: 49, name: 'Incontinence', category: 'Urinary' },
+// Kidney and Urinary Problems
+{ id: 45, name: 'Frequent Urination', category: 'Kidney and Urinary Problems' },
+{ id: 46, name: 'Painful Urination', category: 'Kidney and Urinary Problems' },
+{ id: 47, name: 'Blood in Urine', category: 'Kidney and Urinary Problems' },
+{ id: 48, name: 'Dark or Cloudy Urine', category: 'Kidney and Urinary Problems' },
+{ id: 49, name: 'Incontinence', category: 'Kidney and Urinary Problems' },
 
-  // Musculoskeletal Symptoms
-  { id: 50, name: 'Joint Pain or Swelling', category: 'Musculoskeletal' },
-  { id: 51, name: 'Muscle Weakness or Cramps', category: 'Musculoskeletal' },
-  { id: 52, name: 'Stiffness or Limited Range of Motion', category: 'Musculoskeletal' },
-  { id: 53, name: 'Bone Pain', category: 'Musculoskeletal' },
+// Bone and Joint Problems
+{ id: 50, name: 'Joint Pain or Swelling', category: 'Bone and Joint Problems' },
+{ id: 51, name: 'Muscle Weakness or Cramps', category: 'Bone and Joint Problems' },
+{ id: 52, name: 'Stiffness or Limited Range of Motion', category: 'Bone and Joint Problems' },
+{ id: 53, name: 'Bone Pain', category: 'Bone and Joint Problems' },
 
-  // Mental Health Symptoms
-  { id: 54, name: 'Anxiety', category: 'Mental Health' },
-  { id: 55, name: 'Depression', category: 'Mental Health' },
-  { id: 56, name: 'Irritability', category: 'Mental Health' },
-  { id: 57, name: 'Mood Swings', category: 'Mental Health' },
-  { id: 58, name: 'Hallucinations', category: 'Mental Health' },
-  { id: 59, name: 'Paranoia', category: 'Mental Health' },
-  { id: 60, name: 'Suicidal Thoughts', category: 'Mental Health' },
+// Mental Health Problems
+{ id: 54, name: 'Anxiety', category: 'Mental Health Problems' },
+{ id: 55, name: 'Depression', category: 'Mental Health Problems' },
+{ id: 56, name: 'Irritability', category: 'Mental Health Problems' },
+{ id: 57, name: 'Mood Swings', category: 'Mental Health Problems' },
+{ id: 58, name: 'Hallucinations', category: 'Mental Health Problems' },
+{ id: 59, name: 'Paranoia', category: 'Mental Health Problems' },
+{ id: 60, name: 'Suicidal Thoughts', category: 'Mental Health Problems' },
 
-  // Endocrine Symptoms
-  { id: 61, name: 'Excessive Thirst or Hunger', category: 'Endocrine' },
-  { id: 62, name: 'Hot or Cold Sensitivity', category: 'Endocrine' },
-  { id: 63, name: 'Changes in Skin, Hair, or Nail Texture', category: 'Endocrine' },
-  { id: 64, name: 'Menstrual Irregularities', category: 'Endocrine' },
-  { id: 65, name: 'Unusual Sweating Patterns', category: 'Endocrine' },
+// Diabetes Problems
+{ id: 61, name: 'Excessive Thirst or Hunger', category: 'Diabetes Problems' },
+{ id: 62, name: 'Hot or Cold Sensitivity', category: 'Diabetes Problems' },
+{ id: 63, name: 'Changes in Skin, Hair, or Nail Texture', category: 'Diabetes Problems' },
+{ id: 64, name: 'Menstrual Irregularities', category: 'Reproductive and Sexual Health Problems' },
+{ id: 65, name: 'Unusual Sweating Patterns', category: 'Diabetes Problems' },
 
-  // Immunologic Symptoms
-  { id: 66, name: 'Frequent Infections', category: 'Immunologic' },
-  { id: 67, name: 'Swollen Lymph Nodes', category: 'Immunologic' },
-  { id: 68, name: 'Autoimmune Manifestations (E.g., Lupus, Rheumatoid Arthritis)', category: 'Immunologic' }
+// Infectious Problems
+{ id: 66, name: 'Frequent Infections', category: 'Infectious Problems' },
+{ id: 67, name: 'Swollen Lymph Nodes', category: 'Infectious Problems' },
+{ id: 68, name: 'Autoimmune Manifestations (E.g., Lupus, Rheumatoid Arthritis)', category: 'Infectious Problems' }
 ];
 
 export const CAMP_SCHEDULES = [
