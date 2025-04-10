@@ -172,23 +172,34 @@ const PatientRisks = () => {
   });
 
   useEffect(() => {
-    const selectedCategory = location.state?.selectedCategory;
-    if (selectedCategory && RISK_DATA[selectedCategory]) {
-      setAssessment(RISK_DATA[selectedCategory]);
-    } else {
-      setAssessment({
-        level: "low",
-        percentage: 20,
-        potentialIssues: ["General observation", "Minor symptom pattern"]
-      });
+    let selectedCategory = location.state?.selectedCategory;
+
+    console.log("Selected Category received:", selectedCategory);
+
+    // Normalize input (capitalize each word)
+    if (selectedCategory) {
+      selectedCategory = selectedCategory
+        .toLowerCase()
+        .replace(/\b\w/g, (l) => l.toUpperCase());
+
+      if (RISK_DATA[selectedCategory]) {
+        setAssessment(RISK_DATA[selectedCategory]);
+        return;
+      }
     }
+
+    setAssessment({
+      level: "low",
+      percentage: 20,
+      potentialIssues: ["General observation", "Minor symptom pattern"]
+    });
   }, [location.state]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#ace3c0] to-neutral-50 p-4">
       <Card className="max-w-4xl mx-auto p-6 space-y-6 bg-white/90 backdrop-blur-sm border-neutral-200">
         <h1 className="text-2xl font-bold text-center text-neutral-900">Potential Risks</h1>
-        
+
         <div className="space-y-6">
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-neutral-800">Risk Assessment</h2>
@@ -223,7 +234,7 @@ const PatientRisks = () => {
           </div>
 
           <div className="flex justify-between pt-4">
-            <Button 
+            <Button
               variant="outline"
               onClick={() => navigate(-1)}
               className="border-neutral-600 text-neutral-600 hover:bg-[#ace3c0]/10"
@@ -238,3 +249,4 @@ const PatientRisks = () => {
 };
 
 export default PatientRisks;
+
