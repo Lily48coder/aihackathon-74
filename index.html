@@ -11,7 +11,8 @@
     <!-- Botpress Webchat v2.3 Script -->
     <script src="https://cdn.botpress.cloud/webchat/v2.3/webchat.js" defer></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Botpress when the script loads
+      window.addEventListener('load', function() {
         window.botpressWebChat.init({
           hostUrl: 'https://cdn.botpress.cloud/webchat/v2.3',
           configUrl: 'https://files.bpcontent.cloud/2025/03/22/13/20250322133235-ZRRQRD0I.json',
@@ -20,11 +21,15 @@
           botName: 'DiagnoPredict',
           composerPlaceholder: 'Type here to analyse...',
           showConversationsButton: false, // Hide default button
-          enableTranscriptDownload: false,
-          showCloseButton: true,
-          disableAnimations: false,
           hideWidget: true, // Start hidden
           stylesheet: 'https://cdn.botpress.cloud/webchat/v2.3/default.css'
+        });
+        
+        // Make sure the chat is ready before allowing clicks
+        window.botpressWebChat.onEvent(function(event) {
+          if (event.type === 'LIFECYCLE.LOADED') {
+            document.getElementById('chat-launcher').style.display = 'flex';
+          }
         });
       });
       
@@ -35,7 +40,7 @@
     </script>
     
     <style>
-      .chat-launcher {
+      #chat-launcher {
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -43,16 +48,21 @@
         height: 60px;
         background-color: #3B82F6;
         border-radius: 50%;
-        display: flex;
+        display: none; /* Hidden until Botpress is ready */
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         cursor: pointer;
         z-index: 9999;
+        transition: transform 0.2s;
       }
-      .chat-launcher img {
+      #chat-launcher:hover {
+        transform: scale(1.1);
+      }
+      #chat-launcher svg {
         width: 30px;
         height: 30px;
+        fill: white;
       }
     </style>
   </head>
@@ -64,9 +74,9 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Custom Chat Launcher -->
-    <div class="chat-launcher" onclick="openChat()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+    <!-- Chat Launcher (hidden until Botpress is ready) -->
+    <div id="chat-launcher" onclick="openChat()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
       </svg>
     </div>
