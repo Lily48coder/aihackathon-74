@@ -55,7 +55,7 @@ const PatientSignUp = () => {
       const ageNum = parseInt(value);
       setErrors(prev => ({
         ...prev,
-        age: ageNum <= 0 ? "Age must be a positive number" : ""
+        age: isNaN(ageNum) || ageNum <= 0 ? "Age must be a positive number" : ""
       }));
     }
 
@@ -107,10 +107,12 @@ const PatientSignUp = () => {
               id="age"
               name="age"
               type="number"
+              min="1"
               placeholder="Enter your age"
               value={formData.age}
               onChange={handleChange}
               required
+              onWheel={(e) => e.currentTarget.blur()} // Prevent scroll change
             />
             {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
           </div>
