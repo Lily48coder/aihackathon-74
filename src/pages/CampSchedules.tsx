@@ -62,11 +62,13 @@ const CampSchedules = () => {
                 </DialogHeader>
                 <div className="flex flex-col gap-4">
                   <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={setDate}
-                    className="rounded-md border"
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  defaultMonth={new Date()} // ✅ This line ensures the calendar shows the current month
+                  className="rounded-md border"
                   />
+
                   <Button onClick={handleSchedule} disabled={!date}>
                     Confirm Schedule
                   </Button>
