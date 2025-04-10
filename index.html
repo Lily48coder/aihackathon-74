@@ -7,6 +7,25 @@
     <meta name="description" content="Lovable Generated Project" />
     <meta name="author" content="Lovable" />
     <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Botpress Webchat v2.3 Script (Loads early but initializes on DOM ready) -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.3/webchat.js" defer></script>
+    <script>
+      // Initialize when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        window.botpressWebChat.init({
+          hostUrl: 'https://cdn.botpress.cloud/webchat/v2.3',
+          configUrl: 'https://files.bpcontent.cloud/2025/03/22/13/20250322133235-ZRRQRD0I.json',
+          botId: '93667c20-5b2b-4478-a8d5-2a3e4582bc8f',
+          clientId: 'f1c60e8e-baaf-488a-a167-c1827bedeb91',
+          theme: 'prism',
+          botName: 'DiagnoPredict',
+          composerPlaceholder: 'Type here to analyse...',
+          stylesheet: 'https://cdn.botpress.cloud/webchat/v2.3/default.css',
+          frontendVersion: 'v2.3'
+        });
+      });
+    </script>
   </head>
 
   <body>
@@ -16,31 +35,12 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Botpress Webchat Init -->
-    <script>
-      window.botpress = window.botpress || {};
-      window.botpress.init({
-        "botId": "93667c20-5b2b-4478-a8d5-2a3e4582bc8f",
-        "configuration": {
-          "composerPlaceholder": "type here to analyse...",
-          "botName": "DiagnoPredict",
-          "website": {},
-          "email": {},
-          "phone": {},
-          "termsOfService": {},
-          "privacyPolicy": {},
-          "color": "#3B82F6",
-          "variant": "solid",
-          "themeMode": "light",
-          "fontFamily": "inter",
-          "radius": 1,
-          "allowFileUpload": true
-        },
-        "clientId": "f1c60e8e-baaf-488a-a167-c1827bedeb91"
-      });
-    </script>
-
-    <!-- Required Botpress SDK -->
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <!-- Optional: Add a button to manually open chat -->
+    <button 
+      style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;"
+      onclick="window.botpressWebChat.sendEvent({ type: 'SHOW' })"
+    >
+      Chat with DiagnoPredict
+    </button>
   </body>
 </html>
