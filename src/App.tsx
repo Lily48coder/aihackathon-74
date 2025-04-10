@@ -66,7 +66,6 @@ function App() {
               <Route path="/patient/risks" element={<PatientRisks />} />
             </Routes>
           </Router>
-          <BotpressChatbot />
           <Toaster />
         </AuthProvider>
       </ThemeProvider>
