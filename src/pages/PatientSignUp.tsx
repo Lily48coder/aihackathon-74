@@ -25,12 +25,14 @@ const PatientSignUp = () => {
 
   const [errors, setErrors] = useState({
     password: "",
-    phone: false
+    phone: false,
+    age: "",
+    email: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === "password") {
       if (value.length < 4 || value.length > 13) {
         setErrors(prev => ({
@@ -49,12 +51,28 @@ const PatientSignUp = () => {
       }));
     }
 
+    if (name === "age") {
+      const ageNum = parseInt(value);
+      setErrors(prev => ({
+        ...prev,
+        age: ageNum <= 0 ? "Age must be a positive number" : ""
+      }));
+    }
+
+    if (name === "email") {
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      setErrors(prev => ({
+        ...prev,
+        email: isValid ? "" : "Invalid email address"
+      }));
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!errors.password && !errors.phone) {
+    if (!errors.password && !errors.phone && !errors.age && !errors.email) {
       toast({
         title: "Successfully Registered!",
         description: "Please sign in with your new account.",
@@ -69,7 +87,7 @@ const PatientSignUp = () => {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 space-y-6">
         <h1 className="text-2xl font-bold text-center text-gray-900">Patient Sign Up</h1>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
@@ -94,6 +112,7 @@ const PatientSignUp = () => {
               onChange={handleChange}
               required
             />
+            {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
           </div>
 
           <div className="space-y-2">
@@ -121,6 +140,7 @@ const PatientSignUp = () => {
               onChange={handleChange}
               required
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div className="space-y-2">
@@ -136,6 +156,7 @@ const PatientSignUp = () => {
               className={`${errors.phone ? 'border-red-500 focus:border-red-500' : ''}`}
               maxLength={10}
             />
+            {errors.phone && <p className="text-red-500 text-sm mt-1">Phone number must be 10 digits</p>}
           </div>
 
           <div className="space-y-2">
@@ -220,3 +241,4 @@ const PatientSignUp = () => {
 };
 
 export default PatientSignUp;
+
