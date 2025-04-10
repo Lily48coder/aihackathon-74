@@ -15,6 +15,153 @@ interface RiskAssessment {
   potentialIssues: string[];
 }
 
+const RISK_DATA: Record<string, RiskAssessment> = {
+  "Heart Problems": {
+    level: "high",
+    percentage: 78,
+    potentialIssues: [
+      "Possible heart failure",
+      "Signs of cardiac arrest",
+      "Hypertension-related complications"
+    ]
+  },
+  "Brain Problems": {
+    level: "high",
+    percentage: 81,
+    potentialIssues: [
+      "Stroke indicators",
+      "Risk of epilepsy",
+      "Cognitive dysfunction"
+    ]
+  },
+  "Lung Problems": {
+    level: "intermediate",
+    percentage: 60,
+    potentialIssues: [
+      "Asthma symptoms",
+      "COPD indicators",
+      "Lung infection"
+    ]
+  },
+  "Stomach and Digestive Problems": {
+    level: "intermediate",
+    percentage: 55,
+    potentialIssues: [
+      "Gastric infection",
+      "Signs of IBS",
+      "Acid reflux or indigestion"
+    ]
+  },
+  "Infectious Problems": {
+    level: "intermediate",
+    percentage: 50,
+    potentialIssues: [
+      "Possible viral infection",
+      "Seasonal flu or dengue",
+      "Systemic inflammatory response"
+    ]
+  },
+  "Skin Problems": {
+    level: "low",
+    percentage: 30,
+    potentialIssues: [
+      "Skin allergy",
+      "Fungal or bacterial infection",
+      "Dermatitis"
+    ]
+  },
+  "Bone and Joint Problems": {
+    level: "intermediate",
+    percentage: 45,
+    potentialIssues: [
+      "Arthritis",
+      "Postural issues",
+      "Musculoskeletal strain"
+    ]
+  },
+  "Eye and Vision Problems": {
+    level: "low",
+    percentage: 25,
+    potentialIssues: [
+      "Possible eye strain",
+      "Cataract development",
+      "Night blindness"
+    ]
+  },
+  "Kidney and Urinary Problems": {
+    level: "high",
+    percentage: 70,
+    potentialIssues: [
+      "Possible UTI",
+      "Early signs of kidney infection",
+      "Urinary tract blockage"
+    ]
+  },
+  "Reproductive and Sexual Health Problems": {
+    level: "intermediate",
+    percentage: 50,
+    potentialIssues: [
+      "Hormonal imbalance",
+      "PCOS or endometriosis",
+      "Infections or inflammation"
+    ]
+  },
+  "Mental Health Problems": {
+    level: "high",
+    percentage: 85,
+    potentialIssues: [
+      "Possible depression",
+      "Signs of anxiety",
+      "Mood disorder indicators"
+    ]
+  },
+  "Diabetes Problems": {
+    level: "intermediate",
+    percentage: 58,
+    potentialIssues: [
+      "Fluctuating blood sugar",
+      "Early signs of type 2 diabetes",
+      "Insulin resistance"
+    ]
+  },
+  "Cancer Problems": {
+    level: "high",
+    percentage: 90,
+    potentialIssues: [
+      "Tumor markers detected",
+      "Persistent unexplained symptoms",
+      "Needs urgent screening"
+    ]
+  },
+  "Liver Problems": {
+    level: "intermediate",
+    percentage: 60,
+    potentialIssues: [
+      "Fatty liver symptoms",
+      "Hepatitis signs",
+      "Liver dysfunction"
+    ]
+  },
+  "Dental Problems": {
+    level: "low",
+    percentage: 25,
+    potentialIssues: [
+      "Gum inflammation",
+      "Dental cavity or decay",
+      "Tooth infection"
+    ]
+  },
+  "Nutritional Deficiency Problems": {
+    level: "intermediate",
+    percentage: 50,
+    potentialIssues: [
+      "Lack of iron or vitamins",
+      "Immune suppression",
+      "Fatigue due to poor nutrition"
+    ]
+  }
+};
+
 const PatientRisks = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,51 +172,16 @@ const PatientRisks = () => {
   });
 
   useEffect(() => {
-    // In a real application, this would be an API call to an AI service
-    // For now, we'll simulate the AI analysis based on symptoms
-    const analyzeSymptoms = () => {
-      const selectedCategory = location.state?.selectedCategory;
-      const selectedSymptom = location.state?.selectedSymptom;
-
-      // Simulate AI analysis
-      let riskLevel: keyof typeof RISK_COLORS = "low";
-      let riskPercentage = 0;
-      let issues: string[] = [];
-
-      if (selectedCategory === "Cardiovascular Diseases") {
-        riskLevel = "high";
-        riskPercentage = 75;
-        issues = [
-          "Potential coronary artery disease",
-          "Risk of hypertensive crisis",
-          "Possible cardiac arrhythmia"
-        ];
-      } else if (selectedCategory === "Respiratory Diseases") {
-        riskLevel = "intermediate";
-        riskPercentage = 45;
-        issues = [
-          "Chronic bronchitis indicators",
-          "Early signs of asthma",
-          "Possible upper respiratory infection"
-        ];
-      } else {
-        riskLevel = "low";
-        riskPercentage = 25;
-        issues = [
-          "Minor inflammatory condition",
-          "Temporary systemic response",
-          "Stress-related symptoms"
-        ];
-      }
-
+    const selectedCategory = location.state?.selectedCategory;
+    if (selectedCategory && RISK_DATA[selectedCategory]) {
+      setAssessment(RISK_DATA[selectedCategory]);
+    } else {
       setAssessment({
-        level: riskLevel,
-        percentage: riskPercentage,
-        potentialIssues: issues
+        level: "low",
+        percentage: 20,
+        potentialIssues: ["General observation", "Minor symptom pattern"]
       });
-    };
-
-    analyzeSymptoms();
+    }
   }, [location.state]);
 
   return (
