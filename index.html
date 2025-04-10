@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>docuquest-visit</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
+    <title>docuquest-visit with Chatbot</title>
     <style>
-      /* Ensures chatbot floats above React content */
+      /* Force the chatbot to appear on top of everything */
       #bp-web-widget {
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
         z-index: 9999 !important;
+        height: 600px !important;
+        width: 400px !important;
       }
     </style>
   </head>
@@ -25,18 +24,37 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- ✅ PROVEN WORKING BOTPRESS INTEGRATION -->
-    <script src="https://cdn.botpress.cloud/webchat/v2.3/webchat.js"></script>
+    <!-- Botpress WebChat Integration -->
     <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        window.botpressWebChat.init({
-          "configUrl": "https://files.bpcontent.cloud/2025/03/22/13/20250322133235-ZRRQRD0I.json",
-          "hostUrl": "https://cdn.botpress.cloud/webchat/v2.3"
-        });
+      (function() {
+        // Create script element
+        const script = document.createElement('script');
+        script.src = 'https://cdn.botpress.cloud/webchat/v2.3/webchat.js';
+        script.async = true;
         
-        // Optional: Make chatbot available to React components
-        window.BotpressWebChat = window.botpressWebChat;
-      });
+        // Configuration from YOUR link
+        script.onload = function() {
+          window.botpressWebChat.init({
+            "composerPlaceholder": "Type here to analyse...",
+            "botConversationDescription": "DiagnoPredict Chatbot",
+            "botId": "93667c20-5b2b-4478-a8d5-2a3e4582bc8f",
+            "clientId": "f1c60e8e-baaf-488a-a167-c1827bedeb91",
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v2.3",
+            "messagingUrl": "https://messaging.botpress.cloud",
+            "enableConversationDeletion": true,
+            "showPoweredBy": false,
+            "className": "webchatIframe",
+            "containerWidth": "100%25",
+            "layoutWidth": "100%25",
+            "hideWidget": false,
+            "showCloseButton": true,
+            "enableTranscriptDownload": true
+          });
+        };
+        
+        // Add to document
+        document.body.appendChild(script);
+      })();
     </script>
-  </body>
+  </body>
 </html>
