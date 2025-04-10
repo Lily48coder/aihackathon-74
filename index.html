@@ -11,7 +11,36 @@
 
   <body>
     <div id="root"></div>
+
+    <!-- Your existing scripts -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Botpress Webchat Init -->
+    <script>
+      window.botpress = window.botpress || {};
+      window.botpress.init({
+        "botId": "93667c20-5b2b-4478-a8d5-2a3e4582bc8f",
+        "configuration": {
+          "composerPlaceholder": "type here to analyse...",
+          "botName": "DiagnoPredict",
+          "website": {},
+          "email": {},
+          "phone": {},
+          "termsOfService": {},
+          "privacyPolicy": {},
+          "color": "#3B82F6",
+          "variant": "solid",
+          "themeMode": "light",
+          "fontFamily": "inter",
+          "radius": 1,
+          "allowFileUpload": true
+        },
+        "clientId": "f1c60e8e-baaf-488a-a167-c1827bedeb91"
+      });
+    </script>
+
+    <!-- Required Botpress SDK -->
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
   </body>
 </html>
