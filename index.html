@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DiagnoPredict Chat Integration</title>
   
+  <!-- Botpress Chatbot Embed -->
+  <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/03/22/13/20250322133235-V2ESC7JD.js"></script>
+  
   <!-- Fail-safe CSS to ensure widget visibility -->
   <style>
     #bp-web-widget {
@@ -38,23 +42,7 @@
   <!-- Bulletproof Botpress Integration -->
   <script>
     (function() {
-      // 1. Dynamic script loading with retry logic
-      function loadBotpress() {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.botpress.cloud/webchat/v2.3/webchat.js';
-        script.async = true;
-        script.defer = true;
-        
-        script.onerror = function() {
-          console.warn('Botpress CDN failed, retrying...');
-          setTimeout(loadBotpress, 2000); // Retry after 2 seconds
-        };
-        
-        script.onload = initializeBot;
-        document.body.appendChild(script);
-      }
-      
-      // 2. Initialization with your exact config
+      // 1. Dynamic script loading with retry logic (no longer needed since we're loading via head)
       function initializeBot() {
         window.botpressWebChat.init({
           "botId": "93667c20-5b2b-4478-a8d5-2a3e4582bc8f",
@@ -70,7 +58,7 @@
           "composerPlaceholder": "Type here to analyse..."
         });
         
-        // 3. Triple verification to ensure widget appears
+        // 2. Triple verification to ensure widget appears
         const forceShowWidget = () => {
           try {
             // Method 1: Official API
@@ -106,8 +94,12 @@
         });
       }
       
-      // Start the process
-      loadBotpress();
+      // Start initialization when scripts are loaded
+      if (window.botpressWebChat) {
+        initializeBot();
+      } else {
+        window.addEventListener('botpress-webchat-loaded', initializeBot);
+      }
     })();
   </script>
 </body>
