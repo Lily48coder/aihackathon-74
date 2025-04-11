@@ -1,57 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Other head elements -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiagnoPredict Chat Integration</title>
   
-  <!-- Botpress Webchat CSS -->
+  <!-- Fail-safe CSS to ensure widget visibility -->
   <style>
-    #webchat {
-      width: 400px;
-      height: 600px;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      border: none;
-      z-index: 9999;
+    #bp-web-widget {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      z-index: 9999 !important;
+      width: 400px !important;
+      height: 600px !important;
+      border: none !important;
+      box-shadow: 0 5px 40px rgba(0,0,0,0.16) !important;
+      border-radius: 12px !important;
     }
     
-    /* Hide default floating button */
-    .bpFab { display: none !important; }
+    /* Hide the default launcher since we're forcing visibility */
+    #bp-web-widget-container #button {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
-  <!-- Your existing content -->
   <div id="root"></div>
 
-  <!-- Botpress Webchat Integration -->
-  <div id="webchat"></div>
-  
-  <!-- Botpress Scripts -->
-  <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+  <!-- Your existing scripts -->
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Bulletproof Botpress Integration -->
   <script>
-    window.botpress.init({
-      "botId": "4bd1a95f-738a-4e1f-9cd7-cb9854e49b6c",
-      "clientId": "93ab49ec-ec9b-4202-80e2-9207ec4a21e7",
-      "hostUrl": "https://cdn.botpress.cloud/webchat/v2.3",
-      "configUrl": "https://files.bpcontent.cloud/2025/04/10/15/20250410153154-3VBORL8X.json",
-      "selector": "#webchat",
-      "hideWidget": true // Starts hidden
-    });
-    
-    // Optional: Add button to open chat
-    const chatButton = document.createElement('button');
-    chatButton.innerHTML = '🩺 DiagnoPredict';
-    chatButton.style.position = 'fixed';
-    chatButton.style.bottom = '20px';
-    chatButton.style.right = '20px';
-    chatButton.style.zIndex = '9999';
-    chatButton.style.padding = '10px 15px';
-    chatButton.style.background = '#3B82F6';
-    chatButton.style.color = 'white';
-    chatButton.style.borderRadius = '20px';
-    chatButton.onclick = () => window.botpress.open();
-    
-    document.body.appendChild(chatButton);
+    (function() {
+      // 1. Dynamic script loading with retry logic
+      function loadBotpress() {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.botpress.cloud/webchat/v2.3/webchat.js';
+        script.async = true;
+        script.defer = true;
+        
+        script.onerror = function() {
+          console.warn('Botpress CDN failed, retrying...');
+          setTimeout(loadBotpress, 2000); // Retry after 2 seconds
+        };
+        
+        script.onload = initializeBot;
+        document.body.appendChild(script);
+      }
+      
+      // 2. Initialization with your exact config
+      function initializeBot() {
+        window.botpressWebChat.init({
+          "botId": "93667c20-5b2b-4478-a8d5-2a3e4582bc8f",
+          "clientId": "f1c60e8e-baaf-488a-a167-c1827bedeb91",
+          "hostUrl": "https://cdn.botpress.cloud/webchat/v2.3",
+          "configUrl": "https://files.bpcontent.cloud/2025/03/22/13/20250322133235-ZRRQRD0I.json",
+          "hideWidget": false,
+          "showCloseButton": true,
+          "enableTranscriptDownload": true,
+          "showConversationsButton": false,
+          "disableAnimations": false,
+          "botName": "DiagnoPredict",
+          "composerPlaceholder": "Type here to analyse..."
+        });
+        
+        // 3. Triple verification to ensure widget appears
+        const forceShowWidget = () => {
+          try {
+            // Method 1: Official API
+            window.botpressWebChat.sendEvent({ type: 'SHOW' });
+            
+            // Method 2: DOM manipulation
+            const widget = document.querySelector('#bp-web-widget');
+            if(widget) {
+              widget.style.display = 'block';
+              widget.style.visibility = 'visible';
+            }
+            
+            // Method 3: Iframe content check
+            setTimeout(() => {
+              if(!document.querySelector('.bp-widget-internals')) {
+                window.location.reload(); // Last resort reload
+              }
+            }, 3000);
+          } catch(e) {
+            console.error('Widget error:', e);
+          }
+        };
+        
+        // Run immediately and every 2 seconds until visible
+        const interval = setInterval(forceShowWidget, 2000);
+        window.addEventListener('focus', forceShowWidget);
+        
+        // Stop checking once verified visible
+        window.botpressWebChat.onEvent((evt) => {
+          if(evt.type === 'UI.OPENED') {
+            clearInterval(interval);
+          }
+        });
+      }
+      
+      // Start the process
+      loadBotpress();
+    })();
   </script>
 </body>
 </html>
